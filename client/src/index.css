@@ -173,24 +173,23 @@
     .container {
       padding-left: 2rem;
       padding-right: 2rem;
-      max-width: 960px;
+      max-width: 860px;
     }
   }
 
   /* 와이드 (1280px~) — 가로 긴 24인치 */
   @media (min-width: 1280px) {
     .container {
-      max-width: 1080px;
+      max-width: 960px;
     }
   }
 
   /* 초와이드 (1536px~) — 27인치 이상 */
   @media (min-width: 1536px) {
     .container {
-      max-width: 1200px;
+      max-width: 1080px;
     }
   }
-
   /* =============================================
      Typography
      ============================================= */
