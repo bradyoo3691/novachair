@@ -78,7 +78,7 @@ export default function ProductDetail() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 mb-10 md:mb-16">
           {/* Image */}
           <div className="space-y-4">
-            <div className="aspect-[4/3] overflow-hidden bg-[#E8E0D5]">
+            <div className="aspect-square md:aspect-[4/3] overflow-hidden bg-[#E8E0D5]">
               <img
                 src={product.image}
                 alt={product.name}
