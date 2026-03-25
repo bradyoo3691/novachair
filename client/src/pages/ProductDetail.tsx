@@ -233,11 +233,14 @@ export default function ProductDetail() {
         <div className="mb-16">
           {product.detailImage ? (
             /* detailImage 있으면 탭 없이 풀너비 이미지 바로 표시 */
-            <img
-              src={product.detailImage}
-              alt={`${product.name} 상세 설명`}
-              style={{ width: '100%', height: 'auto', display: 'block' }}
-            />
+            <div className="flex justify-center">
+              <img
+                src={product.detailImage}
+                alt={`${product.name} 상세 설명`}
+                className="w-full md:w-2/3"
+                style={{ height: 'auto', display: 'block' }}
+              />
+            </div>
           ) : (
             /* detailImage 없으면 기존 탭 방식 */
             <>
