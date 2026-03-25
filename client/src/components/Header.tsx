@@ -98,11 +98,11 @@ export default function Header() {
       {/* Navigation banner */}
       <div className="bg-[#E8E0D5] border-t border-[#D5CCBF]">
         <div className="container">
-          <div className="flex items-center justify-center gap-10 py-4">
+          <div className="flex items-center justify-center gap-8 py-2">
             {NAV_LINKS.map((link) => (
               <Link key={link.href} href={link.href}>
                 <button
-                  className={`text-[1.3rem] font-semibold transition-all relative ${
+                  className={`text-[0.8rem] font-semibold transition-all relative ${
                     location === link.href
                       ? 'text-[#1C1C1E]'
                       : 'text-[#1C1C1E] hover:text-[#C4714A]'
