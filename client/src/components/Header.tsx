@@ -1,6 +1,7 @@
 // NovaChair Header Component
 // Design: Scandinavian Minimalism + Industrial Edge
 
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
 import { ShoppingCart, Search, Phone } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
@@ -16,8 +17,17 @@ const NAV_LINKS = [
 export default function Header() {
   const [location] = useLocation();
   const { items } = useCart();
+  const [scrolled, setScrolled] = useState(false);
 
   const cartCount = items.reduce((sum, item) => sum + item.quantity, 0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 60);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 bg-[#FAF8F5] border-b border-[#E8E0D5]">
@@ -43,80 +53,142 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Main header */}
-      <div className="container py-5 flex items-center justify-center relative">
-        {/* Logo - Center */}
-        <Link href="/">
-          <div className="flex flex-col items-center cursor-pointer hover:opacity-80 transition-opacity">
-            <span
-              style={{
-                fontFamily: "'Montserrat', sans-serif",
-                fontWeight: 900,
-                fontSize: 'clamp(28px, 4vw, 52px)',
-                letterSpacing: '0.15em',
-                color: '#1C1C1E',
-                lineHeight: 1,
-              }}
-            >
-              NOVA CHAIR
-            </span>
-            <span
-              style={{
-                fontFamily: "'Inter', sans-serif",
-                fontWeight: 300,
-                fontSize: 'clamp(9px, 1.1vw, 13px)',
-                letterSpacing: '0.5em',
-                color: '#1C1C1E',
-                marginTop: '6px',
-              }}
-            >
-              BEYOND THE CHAIR
-            </span>
-          </div>
-        </Link>
-
-        {/* Right actions - Absolute positioned */}
-        <div className="absolute right-0 flex items-center gap-4">
-          <button className="p-2 hover:bg-[#E8E0D5] rounded transition-colors">
-            <Search size={22} className="text-[#1C1C1E]" />
-          </button>
-          <button className="relative p-2 hover:bg-[#E8E0D5] rounded transition-colors">
-            <ShoppingCart size={22} className="text-[#1C1C1E]" />
-            {cartCount > 0 && (
-              <span className="absolute top-0 right-0 w-5 h-5 bg-[#C4714A] text-white text-[10px] font-bold rounded-full flex items-center justify-center">
-                {cartCount}
+      {/* Main header — 스크롤 시 숨김 */}
+      <div
+        style={{
+          maxHeight: scrolled ? '0px' : '120px',
+          overflow: 'hidden',
+          transition: 'max-height 0.3s ease',
+        }}
+      >
+        <div className="container py-4 flex items-center justify-center relative">
+          {/* Logo - Center */}
+          <Link href="/">
+            <div className="flex flex-col items-center cursor-pointer hover:opacity-80 transition-opacity">
+              <span
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontWeight: 900,
+                  fontSize: 'clamp(22px, 3vw, 40px)',
+                  letterSpacing: '0.15em',
+                  color: '#1C1C1E',
+                  lineHeight: 1,
+                }}
+              >
+                NOVA CHAIR
               </span>
-            )}
-          </button>
-          <a href="tel:0507-1402-6431" className="hidden sm:flex items-center gap-1 px-3 py-2 text-sm font-medium text-[#1C1C1E] hover:text-[#C4714A] transition-colors">
-            <Phone size={18} />
-            <span>0507-1402-6431</span>
-          </a>
+              <span
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontWeight: 300,
+                  fontSize: 'clamp(7px, 0.9vw, 10px)',
+                  letterSpacing: '0.5em',
+                  color: '#1C1C1E',
+                  marginTop: '5px',
+                }}
+              >
+                BEYOND THE CHAIR
+              </span>
+            </div>
+          </Link>
+
+          {/* Right actions */}
+          <div className="absolute right-0 flex items-center gap-4">
+            <button className="p-2 hover:bg-[#E8E0D5] rounded transition-colors">
+              <Search size={20} className="text-[#1C1C1E]" />
+            </button>
+            <button className="relative p-2 hover:bg-[#E8E0D5] rounded transition-colors">
+              <ShoppingCart size={20} className="text-[#1C1C1E]" />
+              {cartCount > 0 && (
+                <span className="absolute top-0 right-0 w-5 h-5 bg-[#C4714A] text-white text-[10px] font-bold rounded-full flex items-center justify-center">
+                  {cartCount}
+                </span>
+              )}
+            </button>
+            <a href="tel:0507-1402-6431" className="hidden sm:flex items-center gap-1 px-3 py-2 text-sm font-medium text-[#1C1C1E] hover:text-[#C4714A] transition-colors">
+              <Phone size={16} />
+              <span>0507-1402-6431</span>
+            </a>
+          </div>
         </div>
       </div>
 
       {/* Navigation banner */}
       <div className="bg-[#E8E0D5] border-t border-[#D5CCBF]">
         <div className="container">
-          <div className="flex items-center justify-center gap-8 py-2">
-            {NAV_LINKS.map((link) => (
-              <Link key={link.href} href={link.href}>
-                <button
-                  className={`text-[0.8rem] font-semibold transition-all relative ${
-                    location === link.href
-                      ? 'text-[#1C1C1E]'
-                      : 'text-[#1C1C1E] hover:text-[#C4714A]'
-                  }`}
+          <div className="flex items-center py-2">
+
+            {/* 스크롤 시 왼쪽에 로고 표시 */}
+            <div
+              style={{
+                maxWidth: scrolled ? '160px' : '0px',
+                overflow: 'hidden',
+                transition: 'max-width 0.3s ease',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              <Link href="/">
+                <span
+                  style={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontWeight: 900,
+                    fontSize: '15px',
+                    letterSpacing: '0.1em',
+                    color: '#1C1C1E',
+                    cursor: 'pointer',
+                    marginRight: '16px',
+                    display: 'inline-block',
+                  }}
                 >
-                  {link.label}
-                  <span
-                    className={`absolute -bottom-1 left-0 h-0.5 bg-[#C4714A] transition-all duration-300 ${
-                      location === link.href ? 'w-full' : 'w-0'
-                    }`}
-                  />
-                </button>
+                  NOVA CHAIR
+                </span>
               </Link>
-            ))}
+            </div>
+
+            {/* Nav links — 스크롤 시 가운데 → 로고 옆으로 */}
+            <div className={`flex items-center gap-8 ${scrolled ? '' : 'flex-1 justify-center'}`}>
+              {NAV_LINKS.map((link) => (
+                <Link key={link.href} href={link.href}>
+                  <button
+                    className={`text-[0.8rem] font-semibold transition-all relative ${
+                      location === link.href
+                        ? 'text-[#1C1C1E]'
+                        : 'text-[#1C1C1E] hover:text-[#C4714A]'
+                    }`}
+                  >
+                    {link.label}
+                    <span
+                      className={`absolute -bottom-1 left-0 h-0.5 bg-[#C4714A] transition-all duration-300 ${
+                        location === link.href ? 'w-full' : 'w-0'
+                      }`}
+                    />
+                  </button>
+                </Link>
+              ))}
+            </div>
+
+            {/* 스크롤 시 오른쪽 아이콘 */}
+            <div
+              style={{
+                maxWidth: scrolled ? '120px' : '0px',
+                overflow: 'hidden',
+                transition: 'max-width 0.3s ease',
+              }}
+              className="flex items-center gap-2 ml-auto"
+            >
+              <button className="p-1.5 hover:bg-[#D5CCBF] rounded transition-colors">
+                <Search size={16} className="text-[#1C1C1E]" />
+              </button>
+              <button className="relative p-1.5 hover:bg-[#D5CCBF] rounded transition-colors">
+                <ShoppingCart size={16} className="text-[#1C1C1E]" />
+                {cartCount > 0 && (
+                  <span className="absolute top-0 right-0 w-4 h-4 bg-[#C4714A] text-white text-[9px] font-bold rounded-full flex items-center justify-center">
+                    {cartCount}
+                  </span>
+                )}
+              </button>
+            </div>
+
           </div>
         </div>
       </div>
