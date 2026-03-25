@@ -57,19 +57,12 @@ export default function Header() {
               xmlns="http://www.w3.org/2000/svg"
               className="flex-shrink-0"
             >
-              {/* 등받이 상단 가로 */}
               <rect x="4" y="2" width="28" height="3.5" rx="1.75" fill="#2D9B5A"/>
-              {/* 등받이 세로 기둥 좌 */}
               <rect x="4" y="2" width="3.5" height="18" rx="1.75" fill="#2D9B5A"/>
-              {/* 등받이 세로 기둥 우 */}
               <rect x="28.5" y="2" width="3.5" height="18" rx="1.75" fill="#2D9B5A"/>
-              {/* 좌판 */}
               <rect x="2" y="18" width="32" height="4" rx="2" fill="#2D9B5A"/>
-              {/* 앞다리 좌 */}
               <rect x="4" y="22" width="3.5" height="16" rx="1.75" fill="#2D9B5A"/>
-              {/* 앞다리 우 */}
               <rect x="28.5" y="22" width="3.5" height="16" rx="1.75" fill="#2D9B5A"/>
-              {/* 발판 가로 */}
               <rect x="4" y="35" width="28" height="3" rx="1.5" fill="#2D9B5A"/>
             </svg>
 
@@ -80,7 +73,7 @@ export default function Header() {
                   fontFamily: "'Montserrat', sans-serif",
                   fontWeight: 900,
                   fontSize: 'clamp(20px, 2.8vw, 34px)',
-                  letterSpacing: '0.04em',
+                  letterSpacing: '0.15em',
                   color: '#1C1C1E',
                   lineHeight: 1,
                 }}
