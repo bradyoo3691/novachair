@@ -1,10 +1,10 @@
 // NovaChair App
 // Design: Scandinavian Minimalism + Industrial Edge
-
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
+import { Route, Switch, useLocation } from "wouter";
+import { useEffect } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { CartProvider } from "./contexts/CartContext";
@@ -16,6 +16,16 @@ import ProductDetail from "./pages/ProductDetail";
 import Wholesale from "./pages/Wholesale";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+
+function ScrollToTop() {
+  const [location] = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [location]);
+
+  return null;
+}
 
 function Router() {
   return (
@@ -35,6 +45,7 @@ function Router() {
 function Layout() {
   return (
     <div className="min-h-screen flex flex-col bg-[#FAF8F5]">
+      <ScrollToTop />
       <Header />
       <div className="flex-1">
         <Router />
