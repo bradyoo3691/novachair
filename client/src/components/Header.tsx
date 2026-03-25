@@ -36,7 +36,7 @@ export default function Header() {
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Inter:wght@300&display=swap');
       `}</style>
 
-      {/* Top bar — 모바일에서 숨김 */}
+      {/* Top bar — 모바일 숨김 */}
       <div className="hidden md:block bg-[#1C1C1E] text-[#F5F0EB] text-xs py-2">
         <div className="container flex items-center justify-between">
           <div className="flex items-center gap-4">
@@ -53,23 +53,23 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Main header — 스크롤 시 숨김 */}
+      {/* Main header — 스크롤 시 숨김, 모바일 숨김 */}
       <div
         style={{
           maxHeight: scrolled ? '0px' : '140px',
           overflow: 'hidden',
           transition: 'max-height 0.3s ease',
         }}
+        className="hidden md:block"
       >
-        <div className="container py-3 flex items-center justify-center relative">
-          {/* Logo - Center */}
+        <div className="container py-4 flex items-center justify-center relative">
           <Link href="/">
             <div className="flex flex-col items-center cursor-pointer hover:opacity-80 transition-opacity">
               <span
                 style={{
                   fontFamily: "'Montserrat', sans-serif",
                   fontWeight: 900,
-                  fontSize: 'clamp(20px, 4vw, 40px)',
+                  fontSize: 'clamp(22px, 3vw, 40px)',
                   letterSpacing: '0.15em',
                   color: '#1C1C1E',
                   lineHeight: 1,
@@ -81,10 +81,10 @@ export default function Header() {
                 style={{
                   fontFamily: "'Inter', sans-serif",
                   fontWeight: 300,
-                  fontSize: 'clamp(6px, 1.5vw, 10px)',
+                  fontSize: 'clamp(7px, 0.9vw, 10px)',
                   letterSpacing: '0.5em',
                   color: '#1C1C1E',
-                  marginTop: '4px',
+                  marginTop: '5px',
                 }}
               >
                 BEYOND THE CHAIR
@@ -92,8 +92,7 @@ export default function Header() {
             </div>
           </Link>
 
-          {/* Right actions — 데스크탑만 */}
-          <div className="absolute right-0 hidden md:flex items-center gap-4">
+          <div className="absolute right-0 flex items-center gap-4">
             <button className="p-2 hover:bg-[#E8E0D5] rounded transition-colors">
               <Search size={20} className="text-[#1C1C1E]" />
             </button>
@@ -110,18 +109,6 @@ export default function Header() {
               <span>0507-1402-6431</span>
             </a>
           </div>
-
-          {/* 모바일 우측 아이콘 */}
-          <div className="absolute right-0 flex md:hidden items-center gap-2">
-            <button className="relative p-2">
-              <ShoppingCart size={20} className="text-[#1C1C1E]" />
-              {cartCount > 0 && (
-                <span className="absolute top-0 right-0 w-4 h-4 bg-[#C4714A] text-white text-[9px] font-bold rounded-full flex items-center justify-center">
-                  {cartCount}
-                </span>
-              )}
-            </button>
-          </div>
         </div>
       </div>
 
@@ -131,7 +118,6 @@ export default function Header() {
 
           {/* 데스크탑 네비 */}
           <div className="hidden md:flex items-center py-2">
-            {/* 스크롤 시 왼쪽 로고 */}
             <div
               style={{
                 maxWidth: scrolled ? '160px' : '0px',
@@ -158,7 +144,6 @@ export default function Header() {
               </Link>
             </div>
 
-            {/* Nav links */}
             <div className={`flex items-center gap-8 ${scrolled ? '' : 'flex-1 justify-center'}`}>
               {NAV_LINKS.map((link) => (
                 <Link key={link.href} href={link.href}>
@@ -180,7 +165,6 @@ export default function Header() {
               ))}
             </div>
 
-            {/* 스크롤 시 우측 아이콘 */}
             <div
               style={{
                 maxWidth: scrolled ? '80px' : '0px',
@@ -203,7 +187,7 @@ export default function Header() {
             </div>
           </div>
 
-          {/* 모바일 네비 — 햄버거 메뉴 */}
+          {/* 모바일 네비 — 햄버거 */}
           <div className="flex md:hidden items-center justify-between py-2">
             <Link href="/">
               <span
@@ -218,35 +202,37 @@ export default function Header() {
                 NOVA CHAIR
               </span>
             </Link>
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-[#1C1C1E]"
-            >
-              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
+            <div className="flex items-center gap-3">
+              <button className="relative p-1.5">
+                <ShoppingCart size={18} className="text-[#1C1C1E]" />
+                {cartCount > 0 && (
+                  <span className="absolute top-0 right-0 w-4 h-4 bg-[#C4714A] text-white text-[9px] font-bold rounded-full flex items-center justify-center">
+                    {cartCount}
+                  </span>
+                )}
+              </button>
+              <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="p-1.5 text-[#1C1C1E]">
+                {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              </button>
+            </div>
           </div>
 
-          {/* 모바일 드롭다운 메뉴 */}
+          {/* 모바일 드롭다운 */}
           {mobileMenuOpen && (
-            <div className="md:hidden border-t border-[#D5CCBF] py-2">
+            <div className="md:hidden border-t border-[#D5CCBF] pb-2">
               {NAV_LINKS.map((link) => (
                 <Link key={link.href} href={link.href}>
                   <button
                     onClick={() => setMobileMenuOpen(false)}
                     className={`w-full text-left px-2 py-3 text-sm font-semibold transition-colors ${
-                      location === link.href
-                        ? 'text-[#C4714A]'
-                        : 'text-[#1C1C1E] hover:text-[#C4714A]'
+                      location === link.href ? 'text-[#C4714A]' : 'text-[#1C1C1E] hover:text-[#C4714A]'
                     }`}
                   >
                     {link.label}
                   </button>
                 </Link>
               ))}
-              
-                href="tel:0507-1402-6431"
-                className="flex items-center gap-2 px-2 py-3 text-sm text-[#1C1C1E]"
-              >
+              <a href="tel:0507-1402-6431" className="flex items-center gap-2 px-2 py-3 text-sm text-[#1C1C1E]">
                 <Phone size={14} />
                 <span>0507-1402-6431</span>
               </a>
@@ -256,7 +242,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Side banner - 국내 직영공장 */}
+      {/* Side banner */}
       <div className="fixed right-0 top-32 z-40 hidden lg:block">
         <div className="bg-[#1C1C1E] text-[#F5F0EB] py-3 px-2 text-center">
           <p className="text-xs font-semibold tracking-widest">국내 직영공장 운영</p>
