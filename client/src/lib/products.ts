@@ -13,6 +13,7 @@ export interface Product {
   shortDesc: string;
   image: string;
   images: string[];
+  detailImage?: string;
   badge?: 'new' | 'best' | 'sale' | 'wholesale';
   discount?: number;
   stock: number;
@@ -40,11 +41,9 @@ export const PRODUCTS: Product[] = [
     wholesaleMinQty: 10,
     description: '국내 직영공장에서 직접 제작한 플라스틱 인테리어 의자. 적재 가능한 스태킹 구조로 식당, 카페, 행사장 등 다양한 공간에 최적화되어 있습니다. 가볍고 내구성이 뛰어나며 관리가 편리합니다.',
     shortDesc: '공간을 채우는 프리미엄 감성',
-    image: '/stella-main.png',
-    images: [
-      '/stella-main.png',
-      '/STELLA-detail.jpg',
-    ],
+    image: '/stella-main2.png',
+    images: ['/stella-main2.png'],
+    detailImage: '/STELLA-detail.jpg',
     badge: 'best',
     stock: 500,
     specs: {
