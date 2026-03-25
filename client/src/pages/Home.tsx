@@ -38,88 +38,14 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#FAF8F5]">
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663474293513/N58bZLfHdioH99RE25RZcN/hero-main-4oEfrbfAKWPqt4ChzCGmcU.webp"
-            alt="프리미엄 가구"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/40" />
-        </div>
 
-        <div className="container relative z-10 text-[#F5F0EB]">
-          <p className="text-xs tracking-[0.2em] uppercase mb-4 text-[#C4714A]" style={{color: '#fdeee8'}}>PREMIUM FURNITURE</p>
-          <h1 className="nova-heading text-5xl md:text-7xl mb-6 leading-tight">
-            공간을 완성하는<br />프리미엄 가구
-          </h1>
-          <p className="text-lg md:text-xl max-w-2xl mb-8 leading-relaxed opacity-90">
-            스칸디나비안 감성의 의자와 가구를 합리적인 가격으로. 소매부터 도매까지, 노바체어가 함께합니다.
-          </p>
-
-          <div className="flex flex-wrap gap-4">
-            <Link href="/products">
-              <button className="nova-btn-primary">
-                <span>전체 상품 보기</span>
-                <ArrowRight size={16} />
-              </button>
-            </Link>
-            <Link href="/wholesale">
-              <button className="nova-btn-outline border-[#F5F0EB]/40 text-[#F5F0EB]">
-                <span>도매 안내</span>
-              </button>
-            </Link>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 mt-16 max-w-md">
-            {[
-              { num: '2,400+', label: '누적 판매' },
-              { num: '98%', label: '고객 만족도' },
-              { num: '5년', label: '품질 보증' },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <p className="nova-mono text-3xl font-bold mb-1">{stat.num}</p>
-                <p className="text-xs opacity-75">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <p className="text-xs text-[#F5F0EB]/60 mb-2">SCROLL</p>
-          <div className="w-px h-6 bg-[#F5F0EB]/40" />
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-16 bg-[#E8E0D5]">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { icon: '📦', title: '직영창고 운영', desc: '빠른 배송' },
-              { icon: '✓', title: '최대 5년 품질 보증', desc: '원목 제품 기준' },
-              { icon: '👥', title: '전담 고객 지원', desc: '맞춤형 서비스' },
-            ].map((feature) => (
-              <div key={feature.title} className="text-center">
-                <p className="text-4xl mb-3">{feature.icon}</p>
-                <h3 className="text-lg font-semibold text-[#1C1C1E] mb-1">{feature.title}</h3>
-                <p className="text-sm text-[#888]">{feature.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Products Section */}
+      {/* 1. Products Section */}
       <section className="py-20 bg-[#FAF8F5]">
         <div className="container">
           <div className="flex items-end justify-between mb-12">
             <div>
               <p className="text-[#C4714A] text-xs tracking-[0.2em] uppercase mb-3">PRODUCTS</p>
-              <h2 className="nova-heading text-4xl md:text-5xl text-[#1C1C1E]">인기 상품</h2>
+              <h2 className="nova-heading text-4xl md:text-5xl text-[#1C1C1E]">상품 목록</h2>
             </div>
             <Link href="/products">
               <button className="nova-btn-primary">
@@ -129,7 +55,6 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* Product grid - 3 columns */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {bestProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
@@ -138,7 +63,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Wholesale Section */}
+      {/* 2. Wholesale Section */}
       <section className="relative py-20 bg-[#1C1C1E] overflow-hidden">
         <div className="absolute inset-0">
           <img
@@ -180,7 +105,61 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Reviews Section */}
+      {/* 3. Hero Section */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663474293513/N58bZLfHdioH99RE25RZcN/hero-main-4oEfrbfAKWPqt4ChzCGmcU.webp"
+            alt="프리미엄 가구"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
+
+        <div className="container relative z-10 text-[#F5F0EB]">
+          <p className="text-xs tracking-[0.2em] uppercase mb-4" style={{color: '#fdeee8'}}>PREMIUM FURNITURE</p>
+          <h1 className="nova-heading text-5xl md:text-7xl mb-6 leading-tight">
+            공간을 완성하는<br />프리미엄 가구
+          </h1>
+          <p className="text-lg md:text-xl max-w-2xl mb-8 leading-relaxed opacity-90">
+            스칸디나비안 감성의 의자와 가구를 합리적인 가격으로. 소매부터 도매까지, 노바체어가 함께합니다.
+          </p>
+
+          <div className="flex flex-wrap gap-4">
+            <Link href="/products">
+              <button className="nova-btn-primary">
+                <span>전체 상품 보기</span>
+                <ArrowRight size={16} />
+              </button>
+            </Link>
+            <Link href="/wholesale">
+              <button className="nova-btn-outline border-[#F5F0EB]/40 text-[#F5F0EB]">
+                <span>도매 안내</span>
+              </button>
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-3 gap-8 mt-16 max-w-md">
+            {[
+              { num: '2,400+', label: '누적 판매' },
+              { num: '98%', label: '고객 만족도' },
+              { num: '5년', label: '품질 보증' },
+            ].map((stat) => (
+              <div key={stat.label}>
+                <p className="nova-mono text-3xl font-bold mb-1">{stat.num}</p>
+                <p className="text-xs opacity-75">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <p className="text-xs text-[#F5F0EB]/60 mb-2">SCROLL</p>
+          <div className="w-px h-6 bg-[#F5F0EB]/40" />
+        </div>
+      </section>
+
+      {/* 4. Reviews Section */}
       <section className="py-20 bg-[#F5F0EB]">
         <div className="container">
           <p className="text-[#C4714A] text-xs tracking-[0.2em] uppercase mb-3">REVIEWS</p>
@@ -205,6 +184,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
     </main>
   );
 }
