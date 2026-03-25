@@ -30,12 +30,15 @@ export default function ProductCard({ product }: ProductCardProps) {
     <div className="product-card">
       {/* Image with thumbnail hover */}
       <div className="product-image-wrap relative">
-        <img 
-          src={product.images[hoveredImage] || product.image} 
-          alt={product.name} 
-          loading="lazy"
-          className="w-full h-full object-cover"
-        />
+        <Link href={`/product/${product.id}`}>
+          <img 
+            src={product.images[hoveredImage] || product.image} 
+            alt={product.name} 
+            loading="lazy"
+            className="w-full h-full object-cover cursor-pointer"
+          />
+        </Link>
+  
 
         {/* Badge */}
         {badge && (
