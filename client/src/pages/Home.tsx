@@ -45,12 +45,12 @@ export default function Home() {
           <div className="flex items-end justify-between mb-12">
             <div>
               <p className="text-[#C4714A] text-xs tracking-[0.2em] uppercase mb-3">PRODUCTS</p>
-              <h2 className="nova-heading text-4xl md:text-5xl text-[#1C1C1E]">상품 목록</h2>
+              <h2 className="nova-heading text-4xl md:text-5xl text-[#1C1C1E]">노바 체어</h2>
             </div>
             <Link href="/products">
               <button className="nova-btn-primary">
                 <span>전체 보기</span>
-                <ArrowRight size={16} />
+                <ArrowRight size={10} />
               </button>
             </Link>
           </div>
