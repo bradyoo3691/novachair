@@ -22,6 +22,11 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-[#FAF8F5] border-b border-[#E8E0D5]">
+      {/* Google Fonts */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Inter:wght@300&display=swap');
+      `}</style>
+
       {/* Top bar */}
       <div className="bg-[#1C1C1E] text-[#F5F0EB] text-xs py-2">
         <div className="container flex items-center justify-between">
@@ -32,7 +37,7 @@ export default function Header() {
             <span className="text-[#C4714A]">·</span>
             <span>무료배송 (수량 협의)</span>
           </div>
-          <a href="tel:02-1234-5678" className="flex items-center gap-1 hover:text-[#C4714A] transition-colors">
+          <a href="tel:0507-1402-6431" className="flex items-center gap-1 hover:text-[#C4714A] transition-colors">
             <Phone size={12} />
             <span>0507-1402-6431</span>
           </a>
@@ -43,12 +48,58 @@ export default function Header() {
       <div className="container py-4 flex items-center justify-center relative">
         {/* Logo - Center */}
         <Link href="/">
-          <div className="flex flex-col items-center cursor-pointer hover:opacity-80 transition-opacity">
-            <div className="text-2xl font-bold text-[#1C1C1E]">
-              <span style={{fontSize: '40px', fontWeight: '900', fontFamily: 'Montserrat'}}>NOVA</span>
-              <span className="text-[#C4714A]" style={{color: '#000000', fontSize: '40px', fontWeight: '900', fontFamily: 'Montserrat'}}>CHAIR</span>
+          <div className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity">
+            {/* Chair Icon SVG */}
+            <svg
+              width="32" height="38"
+              viewBox="0 0 36 42"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="flex-shrink-0"
+            >
+              {/* 등받이 상단 가로 */}
+              <rect x="4" y="2" width="28" height="3.5" rx="1.75" fill="#2D9B5A"/>
+              {/* 등받이 세로 기둥 좌 */}
+              <rect x="4" y="2" width="3.5" height="18" rx="1.75" fill="#2D9B5A"/>
+              {/* 등받이 세로 기둥 우 */}
+              <rect x="28.5" y="2" width="3.5" height="18" rx="1.75" fill="#2D9B5A"/>
+              {/* 좌판 */}
+              <rect x="2" y="18" width="32" height="4" rx="2" fill="#2D9B5A"/>
+              {/* 앞다리 좌 */}
+              <rect x="4" y="22" width="3.5" height="16" rx="1.75" fill="#2D9B5A"/>
+              {/* 앞다리 우 */}
+              <rect x="28.5" y="22" width="3.5" height="16" rx="1.75" fill="#2D9B5A"/>
+              {/* 발판 가로 */}
+              <rect x="4" y="35" width="28" height="3" rx="1.5" fill="#2D9B5A"/>
+            </svg>
+
+            {/* Text */}
+            <div className="flex flex-col">
+              <span
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontWeight: 900,
+                  fontSize: 'clamp(20px, 2.8vw, 34px)',
+                  letterSpacing: '0.04em',
+                  color: '#1C1C1E',
+                  lineHeight: 1,
+                }}
+              >
+                NOVA CHAIR
+              </span>
+              <span
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontWeight: 300,
+                  fontSize: 'clamp(7px, 0.9vw, 10px)',
+                  letterSpacing: '0.5em',
+                  color: '#1C1C1E',
+                  marginTop: '5px',
+                }}
+              >
+                BEYOND THE CHAIR
+              </span>
             </div>
-            <div className="text-[10px] text-[#888] tracking-widest" style={{color: '#000000', marginTop: '-3px', fontWeight: '300', fontFamily: 'inter', opacity: '500'}}>BEYOND THE CHAIR</div>
           </div>
         </Link>
 
@@ -57,9 +108,7 @@ export default function Header() {
           <button className="p-2 hover:bg-[#E8E0D5] rounded transition-colors">
             <Search size={20} className="text-[#1C1C1E]" />
           </button>
-          <button
-            className="relative p-2 hover:bg-[#E8E0D5] rounded transition-colors"
-          >
+          <button className="relative p-2 hover:bg-[#E8E0D5] rounded transition-colors">
             <ShoppingCart size={20} className="text-[#1C1C1E]" />
             {cartCount > 0 && (
               <span className="absolute top-0 right-0 w-5 h-5 bg-[#C4714A] text-white text-[10px] font-bold rounded-full flex items-center justify-center">
@@ -67,7 +116,7 @@ export default function Header() {
               </span>
             )}
           </button>
-          <a href="tel:02-1234-5678" className="hidden sm:flex items-center gap-1 px-3 py-2 text-sm font-medium text-[#1C1C1E] hover:text-[#C4714A] transition-colors">
+          <a href="tel:0507-1402-6431" className="hidden sm:flex items-center gap-1 px-3 py-2 text-sm font-medium text-[#1C1C1E] hover:text-[#C4714A] transition-colors">
             <Phone size={16} />
             <span>0507-1402-6431</span>
           </a>
