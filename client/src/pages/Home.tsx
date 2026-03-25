@@ -50,7 +50,7 @@ export default function Home() {
         </div>
 
         <div className="container relative z-10 text-[#F5F0EB]">
-          <p className="text-xs tracking-[0.2em] uppercase mb-4 text-[#C4714A]">PREMIUM FURNITURE</p>
+          <p className="text-xs tracking-[0.2em] uppercase mb-4 text-[#C4714A]" style={{color: '#fdeee8'}}>PREMIUM FURNITURE</p>
           <h1 className="nova-heading text-5xl md:text-7xl mb-6 leading-tight">
             공간을 완성하는<br />프리미엄 가구
           </h1>

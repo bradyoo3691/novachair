@@ -26,15 +26,15 @@ export default function Header() {
       <div className="bg-[#1C1C1E] text-[#F5F0EB] text-xs py-2">
         <div className="container flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <span>도매 문의: 02-1234-5678</span>
+            <span>도매 문의: 0507-1402-6431</span>
             <span className="text-[#C4714A]">|</span>
-            <span>5개 이상 주문 시 도매가 적용</span>
+            <span>대량 구매 [도매 안내] 배너 참고</span>
             <span className="text-[#C4714A]">·</span>
-            <span>무료배송 (50만원 이상)</span>
+            <span>무료배송 (수량 협의)</span>
           </div>
           <a href="tel:02-1234-5678" className="flex items-center gap-1 hover:text-[#C4714A] transition-colors">
             <Phone size={12} />
-            <span>02-1234-5678</span>
+            <span>0507-1402-6431</span>
           </a>
         </div>
       </div>
@@ -45,10 +45,10 @@ export default function Header() {
         <Link href="/">
           <div className="flex flex-col items-center cursor-pointer hover:opacity-80 transition-opacity">
             <div className="text-2xl font-bold text-[#1C1C1E]">
-              <span>NOVA</span>
-              <span className="text-[#C4714A]">CHAIR</span>
+              <span style={{fontSize: '40px', fontWeight: '900', fontFamily: 'Montserrat'}}>NOVA</span>
+              <span className="text-[#C4714A]" style={{color: '#000000', fontSize: '40px', fontWeight: '900', fontFamily: 'Montserrat'}}>CHAIR</span>
             </div>
-            <div className="text-[10px] text-[#888] tracking-widest">BEYOND THE CHAIR</div>
+            <div className="text-[10px] text-[#888] tracking-widest" style={{color: '#000000', marginTop: '-3px', fontWeight: '300', fontFamily: 'inter', opacity: '500'}}>BEYOND THE CHAIR</div>
           </div>
         </Link>
 
@@ -69,7 +69,7 @@ export default function Header() {
           </button>
           <a href="tel:02-1234-5678" className="hidden sm:flex items-center gap-1 px-3 py-2 text-sm font-medium text-[#1C1C1E] hover:text-[#C4714A] transition-colors">
             <Phone size={16} />
-            <span>02-1234-5678</span>
+            <span>0507-1402-6431</span>
           </a>
         </div>
       </div>
