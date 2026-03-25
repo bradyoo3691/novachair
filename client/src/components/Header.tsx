@@ -1,7 +1,6 @@
 // NovaChair Header Component
 // Design: Scandinavian Minimalism + Industrial Edge
 
-import { useState } from 'react';
 import { Link, useLocation } from 'wouter';
 import { ShoppingCart, Search, Phone } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
@@ -45,64 +44,44 @@ export default function Header() {
       </div>
 
       {/* Main header */}
-      <div className="container py-4 flex items-center justify-center relative">
+      <div className="container py-5 flex items-center justify-center relative">
         {/* Logo - Center */}
         <Link href="/">
-          <div className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity">
-            {/* Chair Icon SVG */}
-            <svg
-              width="32" height="38"
-              viewBox="0 0 36 42"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="flex-shrink-0"
+          <div className="flex flex-col items-center cursor-pointer hover:opacity-80 transition-opacity">
+            <span
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                fontWeight: 900,
+                fontSize: 'clamp(28px, 4vw, 52px)',
+                letterSpacing: '0.15em',
+                color: '#1C1C1E',
+                lineHeight: 1,
+              }}
             >
-              <rect x="4" y="2" width="28" height="3.5" rx="1.75" fill="#2D9B5A"/>
-              <rect x="4" y="2" width="3.5" height="18" rx="1.75" fill="#2D9B5A"/>
-              <rect x="28.5" y="2" width="3.5" height="18" rx="1.75" fill="#2D9B5A"/>
-              <rect x="2" y="18" width="32" height="4" rx="2" fill="#2D9B5A"/>
-              <rect x="4" y="22" width="3.5" height="16" rx="1.75" fill="#2D9B5A"/>
-              <rect x="28.5" y="22" width="3.5" height="16" rx="1.75" fill="#2D9B5A"/>
-              <rect x="4" y="35" width="28" height="3" rx="1.5" fill="#2D9B5A"/>
-            </svg>
-
-            {/* Text */}
-            <div className="flex flex-col">
-              <span
-                style={{
-                  fontFamily: "'Montserrat', sans-serif",
-                  fontWeight: 900,
-                  fontSize: 'clamp(20px, 2.8vw, 34px)',
-                  letterSpacing: '0.15em',
-                  color: '#1C1C1E',
-                  lineHeight: 1,
-                }}
-              >
-                NOVA CHAIR
-              </span>
-              <span
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontWeight: 300,
-                  fontSize: 'clamp(7px, 0.9vw, 10px)',
-                  letterSpacing: '0.5em',
-                  color: '#1C1C1E',
-                  marginTop: '5px',
-                }}
-              >
-                BEYOND THE CHAIR
-              </span>
-            </div>
+              NOVA CHAIR
+            </span>
+            <span
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: 300,
+                fontSize: 'clamp(9px, 1.1vw, 13px)',
+                letterSpacing: '0.5em',
+                color: '#1C1C1E',
+                marginTop: '6px',
+              }}
+            >
+              BEYOND THE CHAIR
+            </span>
           </div>
         </Link>
 
         {/* Right actions - Absolute positioned */}
         <div className="absolute right-0 flex items-center gap-4">
           <button className="p-2 hover:bg-[#E8E0D5] rounded transition-colors">
-            <Search size={20} className="text-[#1C1C1E]" />
+            <Search size={22} className="text-[#1C1C1E]" />
           </button>
           <button className="relative p-2 hover:bg-[#E8E0D5] rounded transition-colors">
-            <ShoppingCart size={20} className="text-[#1C1C1E]" />
+            <ShoppingCart size={22} className="text-[#1C1C1E]" />
             {cartCount > 0 && (
               <span className="absolute top-0 right-0 w-5 h-5 bg-[#C4714A] text-white text-[10px] font-bold rounded-full flex items-center justify-center">
                 {cartCount}
@@ -110,7 +89,7 @@ export default function Header() {
             )}
           </button>
           <a href="tel:0507-1402-6431" className="hidden sm:flex items-center gap-1 px-3 py-2 text-sm font-medium text-[#1C1C1E] hover:text-[#C4714A] transition-colors">
-            <Phone size={16} />
+            <Phone size={18} />
             <span>0507-1402-6431</span>
           </a>
         </div>
@@ -119,11 +98,11 @@ export default function Header() {
       {/* Navigation banner */}
       <div className="bg-[#E8E0D5] border-t border-[#D5CCBF]">
         <div className="container">
-          <div className="flex items-center justify-center gap-8 py-3">
+          <div className="flex items-center justify-center gap-10 py-4">
             {NAV_LINKS.map((link) => (
               <Link key={link.href} href={link.href}>
                 <button
-                  className={`text-sm font-semibold transition-all relative ${
+                  className={`text-[1.3rem] font-semibold transition-all relative ${
                     location === link.href
                       ? 'text-[#1C1C1E]'
                       : 'text-[#1C1C1E] hover:text-[#C4714A]'
