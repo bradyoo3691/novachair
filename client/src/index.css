@@ -94,7 +94,7 @@
   --muted: oklch(0.274 0.006 286.033);
   --muted-foreground: oklch(0.705 0.015 286.067);
   --accent: oklch(0.274 0.006 286.033);
-  --accent-foreground:  oklch(0.92 0.005 65);
+  --accent-foreground: oklch(0.92 0.005 65);
   --destructive: oklch(0.704 0.191 22.216);
   --destructive-foreground: oklch(0.985 0 0);
   --border: oklch(1 0 0 / 10%);
@@ -108,7 +108,7 @@
   --sidebar: oklch(0.21 0.006 285.885);
   --sidebar-foreground: oklch(0.85 0.005 65);
   --sidebar-accent: oklch(0.274 0.006 286.033);
-  --sidebar-accent-foreground:  oklch(0.985 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.488 0.243 264.376);
 }
@@ -143,6 +143,10 @@
 }
 
 @layer components {
+
+  /* =============================================
+     Container — 해상도별 최대 너비
+     ============================================= */
   .container {
     width: 100%;
     margin-left: auto;
@@ -156,6 +160,7 @@
     min-width: 0;
   }
 
+  /* 태블릿 (640px~) */
   @media (min-width: 640px) {
     .container {
       padding-left: 1.5rem;
@@ -163,14 +168,32 @@
     }
   }
 
+  /* 데스크탑 (1024px~) — 정사각형에 가까운 24인치 */
   @media (min-width: 1024px) {
     .container {
       padding-left: 2rem;
       padding-right: 2rem;
-      max-width: 1280px;
+      max-width: 960px;
     }
   }
 
+  /* 와이드 (1280px~) — 가로 긴 24인치 */
+  @media (min-width: 1280px) {
+    .container {
+      max-width: 1080px;
+    }
+  }
+
+  /* 초와이드 (1536px~) — 27인치 이상 */
+  @media (min-width: 1536px) {
+    .container {
+      max-width: 1200px;
+    }
+  }
+
+  /* =============================================
+     Typography
+     ============================================= */
   .nova-heading {
     font-family: 'Playfair Display', 'Noto Sans KR', serif;
     font-weight: 700;
@@ -182,6 +205,9 @@
     font-weight: 500;
   }
 
+  /* =============================================
+     Buttons
+     ============================================= */
   .nova-btn-primary {
     display: inline-flex;
     align-items: center;
@@ -231,6 +257,9 @@
     color: oklch(0.964 0.012 68);
   }
 
+  /* =============================================
+     Misc
+     ============================================= */
   .nova-divider {
     height: 1px;
     background: linear-gradient(to right, oklch(0.92 0.004 286.32), oklch(0.92 0.004 286.32 / 0), oklch(0.92 0.004 286.32));
@@ -248,6 +277,9 @@
     border-radius: 0.25rem;
   }
 
+  /* =============================================
+     Product Card
+     ============================================= */
   .product-card {
     position: relative;
     overflow: hidden;
