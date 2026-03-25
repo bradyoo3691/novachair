@@ -28,22 +28,21 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   return (
     <div className="product-card">
-      {/* Image with thumbnail hover */}
+      {/* Image */}
       <div className="product-image-wrap relative">
         <Link href={`/product/${product.id}`}>
-          <img 
-            src={product.images[hoveredImage] || product.image} 
-            alt={product.name} 
+          <img
+            src={product.images[hoveredImage] || product.image}
+            alt={product.name}
             loading="lazy"
             className="w-full h-full object-cover cursor-pointer"
           />
         </Link>
-  
 
         {/* Badge */}
         {badge && (
           <div
-            className="absolute top-3 left-3 nova-tag z-10"
+            className="absolute top-2 left-2 nova-tag z-10 text-[10px] px-2 py-0.5"
             style={{ background: badge.bg, color: badge.text }}
           >
             {badge.label}
@@ -52,42 +51,27 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         {/* Discount badge */}
         {product.discount && (
-          <div className="absolute top-3 right-3 nova-tag z-10 bg-[#C4714A] text-white">
+          <div className="absolute top-2 right-2 nova-tag z-10 bg-[#C4714A] text-white text-[10px] px-2 py-0.5">
             -{product.discount}%
           </div>
         )}
 
-        {/* Thumbnails - hover to change image */}
-        <div className="absolute bottom-3 left-3 right-3 flex gap-2">
-          {product.images.map((img, i) => (
-            <button
-              key={i}
-              onMouseEnter={() => setHoveredImage(i)}
-              className={`w-8 h-8 rounded overflow-hidden border-2 transition-all flex-shrink-0 ${
-                hoveredImage === i ? 'border-[#C4714A]' : 'border-[#E8E0D5] hover:border-[#888]'
-              }`}
-            >
-              <img src={img} alt="" className="w-full h-full object-cover" />
-            </button>
-          ))}
-        </div>
-
-        {/* Overlay */}
-        <div className="product-overlay">
-          <div className="w-full p-4 flex gap-2">
+        {/* Overlay — 데스크탑만 */}
+        <div className="product-overlay hidden md:flex">
+          <div className="w-full p-3 flex gap-2">
             <button
               onClick={() => {
                 addToCart(product, 1, false);
                 toast.success(`${product.name}이(가) 장바구니에 추가되었습니다.`);
               }}
-              className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-[#F5F0EB] text-[#1C1C1E] text-xs font-semibold tracking-wide hover:bg-[#C4714A] hover:text-white transition-colors"
+              className="flex-1 flex items-center justify-center gap-1 py-2 bg-[#F5F0EB] text-[#1C1C1E] text-xs font-semibold hover:bg-[#C4714A] hover:text-white transition-colors"
             >
-              <ShoppingCart size={14} />
+              <ShoppingCart size={12} />
               <span>담기</span>
             </button>
             <Link href={`/product/${product.id}`}>
-              <button className="w-10 h-10 flex items-center justify-center bg-[#F5F0EB]/20 border border-[#F5F0EB]/40 text-[#F5F0EB] hover:bg-[#F5F0EB] hover:text-[#1C1C1E] transition-colors">
-                <Eye size={14} />
+              <button className="w-9 h-9 flex items-center justify-center bg-[#F5F0EB]/20 border border-[#F5F0EB]/40 text-[#F5F0EB] hover:bg-[#F5F0EB] hover:text-[#1C1C1E] transition-colors">
+                <Eye size={13} />
               </button>
             </Link>
           </div>
@@ -95,8 +79,8 @@ export default function ProductCard({ product }: ProductCardProps) {
       </div>
 
       {/* Info */}
-      <div className="p-4">
-        <p className="text-[10px] text-[#888] tracking-widest uppercase mb-1">
+      <div className="p-3">
+        <p className="text-[10px] text-[#888] tracking-widest uppercase mb-0.5">
           {product.category}
         </p>
         <Link href={`/product/${product.id}`}>
@@ -104,33 +88,41 @@ export default function ProductCard({ product }: ProductCardProps) {
             {product.name}
           </h3>
         </Link>
-        <p className="text-xs text-[#888] mt-1 line-clamp-2 leading-relaxed">
+        <p className="text-xs text-[#888] mt-0.5 line-clamp-1 leading-relaxed">
           {product.shortDesc}
         </p>
-        <div className="flex items-center justify-between mt-3">
-          <div>
-            {product.discount ? (
-              <div className="flex items-baseline gap-2">
-                <span className="nova-mono text-base font-bold text-[#1C1C1E]">
-                  {formatPrice(finalPrice)}
-                </span>
-                <span className="nova-mono text-xs text-[#888] line-through">
-                  {formatPrice(product.price)}
-                </span>
-              </div>
-            ) : (
-              <span className="nova-mono text-base font-bold text-[#1C1C1E]">
+
+        <div className="mt-2">
+          {product.discount ? (
+            <div className="flex items-baseline gap-1.5 flex-wrap">
+              <span className="text-sm font-bold text-[#1C1C1E]">
+                {formatPrice(finalPrice)}
+              </span>
+              <span className="text-xs text-[#888] line-through">
                 {formatPrice(product.price)}
               </span>
-            )}
-            <p className="text-[10px] text-[#C4714A] mt-0.5 nova-mono">
-              도매: {formatPrice(product.wholesalePrice)}
-            </p>
-          </div>
-          <div className="text-[10px] text-[#888]">
-            재고 {product.stock}개
-          </div>
+            </div>
+          ) : (
+            <span className="text-sm font-bold text-[#1C1C1E]">
+              {formatPrice(product.price)}
+            </span>
+          )}
+          <p className="text-[11px] text-[#C4714A] mt-0.5">
+            도매: {formatPrice(product.wholesalePrice)}
+          </p>
         </div>
+
+        {/* 모바일 담기 버튼 */}
+        <button
+          onClick={() => {
+            addToCart(product, 1, false);
+            toast.success(`${product.name}이(가) 장바구니에 추가되었습니다.`);
+          }}
+          className="md:hidden w-full mt-2 py-2 flex items-center justify-center gap-1 bg-[#1C1C1E] text-[#F5F0EB] text-xs font-semibold rounded"
+        >
+          <ShoppingCart size={12} />
+          <span>담기</span>
+        </button>
       </div>
     </div>
   );
