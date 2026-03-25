@@ -131,7 +131,6 @@ export default function ProductDetail() {
                     </span>
                   )}
                 </div>
-                {/* Wholesale toggle */}
                 <div className="text-right">
                   <p className="text-xs text-[#888] mb-1">도매가</p>
                   <p className="nova-mono text-lg font-semibold text-[#C4714A]">
@@ -194,10 +193,7 @@ export default function ProductDetail() {
             )}
 
             {/* Add to cart */}
-            <button
-              onClick={handleAddToCart}
-              className="nova-btn-primary w-full mb-3"
-            >
+            <button onClick={handleAddToCart} className="nova-btn-primary w-full mb-3">
               <ShoppingCart size={16} />
               <span>장바구니 담기</span>
             </button>
@@ -255,9 +251,20 @@ export default function ProductDetail() {
             ))}
           </div>
 
+          {/* 상품 설명 탭 — detailImage 있으면 전체 너비 이미지, 없으면 텍스트 */}
           {activeTab === 'desc' && (
-            <div className="max-w-2xl">
-              <p className="text-sm text-[#1C1C1E] leading-relaxed">{product.description}</p>
+            <div>
+              {product.detailImage ? (
+                <img
+                  src={product.detailImage}
+                  alt={`${product.name} 상세 설명`}
+                  className="w-full max-w-2xl mx-auto block"
+                />
+              ) : (
+                <p className="text-sm text-[#1C1C1E] leading-relaxed max-w-2xl">
+                  {product.description}
+                </p>
+              )}
             </div>
           )}
 
