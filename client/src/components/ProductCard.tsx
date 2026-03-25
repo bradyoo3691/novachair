@@ -1,6 +1,7 @@
 // NovaChair Product Card Component
 // Design: Scandinavian Minimalism + Industrial Edge
 
+import { useState } from 'react';
 import { ShoppingCart, Eye } from 'lucide-react';
 import { Link } from 'wouter';
 import type { Product } from '@/lib/products';
@@ -21,14 +22,20 @@ const BADGE_CONFIG = {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const { addToCart } = useCart();
+  const [hoveredImage, setHoveredImage] = useState(0);
   const finalPrice = getDiscountedPrice(product.price, product.discount);
   const badge = product.badge ? BADGE_CONFIG[product.badge] : null;
 
   return (
     <div className="product-card">
-      {/* Image */}
-      <div className="product-image-wrap">
-        <img src={product.image} alt={product.name} loading="lazy" />
+      {/* Image with thumbnail hover */}
+      <div className="product-image-wrap relative">
+        <img 
+          src={product.images[hoveredImage] || product.image} 
+          alt={product.name} 
+          loading="lazy"
+          className="w-full h-full object-cover"
+        />
 
         {/* Badge */}
         {badge && (
@@ -46,6 +53,21 @@ export default function ProductCard({ product }: ProductCardProps) {
             -{product.discount}%
           </div>
         )}
+
+        {/* Thumbnails - hover to change image */}
+        <div className="absolute bottom-3 left-3 right-3 flex gap-2">
+          {product.images.map((img, i) => (
+            <button
+              key={i}
+              onMouseEnter={() => setHoveredImage(i)}
+              className={`w-8 h-8 rounded overflow-hidden border-2 transition-all flex-shrink-0 ${
+                hoveredImage === i ? 'border-[#C4714A]' : 'border-[#E8E0D5] hover:border-[#888]'
+              }`}
+            >
+              <img src={img} alt="" className="w-full h-full object-cover" />
+            </button>
+          ))}
+        </div>
 
         {/* Overlay */}
         <div className="product-overlay">

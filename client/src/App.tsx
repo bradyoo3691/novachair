@@ -15,6 +15,7 @@ import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
 import Wholesale from "./pages/Wholesale";
 import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 function Router() {
   return (
@@ -24,6 +25,7 @@ function Router() {
       <Route path="/product/:id" component={ProductDetail} />
       <Route path="/wholesale" component={Wholesale} />
       <Route path="/about" component={About} />
+      <Route path="/contact" component={Contact} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
