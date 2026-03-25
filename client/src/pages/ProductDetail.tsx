@@ -229,77 +229,78 @@ export default function ProductDetail() {
           </div>
         </div>
 
-        {/* Tabs */}
+        {/* 상세 이미지 또는 탭 */}
         <div className="mb-16">
-          <div className="flex border-b border-[#E8E0D5] mb-8">
-            {[
-              { key: 'desc', label: '상품 설명' },
-              { key: 'spec', label: '상세 스펙' },
-              { key: 'shipping', label: '배송/반품' },
-            ].map((tab) => (
-              <button
-                key={tab.key}
-                onClick={() => setActiveTab(tab.key as typeof activeTab)}
-                className={`px-6 py-3 text-sm font-medium transition-all border-b-2 -mb-px ${
-                  activeTab === tab.key
-                    ? 'border-[#C4714A] text-[#C4714A]'
-                    : 'border-transparent text-[#888] hover:text-[#1C1C1E]'
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
+          {product.detailImage ? (
+            /* detailImage 있으면 탭 없이 풀너비 이미지 바로 표시 */
+            <img
+              src={product.detailImage}
+              alt={`${product.name} 상세 설명`}
+              style={{ width: '100%', height: 'auto', display: 'block' }}
+            />
+          ) : (
+            /* detailImage 없으면 기존 탭 방식 */
+            <>
+              <div className="flex border-b border-[#E8E0D5] mb-8">
+                {[
+                  { key: 'desc', label: '상품 설명' },
+                  { key: 'spec', label: '상세 스펙' },
+                  { key: 'shipping', label: '배송/반품' },
+                ].map((tab) => (
+                  <button
+                    key={tab.key}
+                    onClick={() => setActiveTab(tab.key as typeof activeTab)}
+                    className={`px-6 py-3 text-sm font-medium transition-all border-b-2 -mb-px ${
+                      activeTab === tab.key
+                        ? 'border-[#C4714A] text-[#C4714A]'
+                        : 'border-transparent text-[#888] hover:text-[#1C1C1E]'
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
 
-          {/* 상품 설명 탭 — detailImage 있으면 전체 너비 이미지, 없으면 텍스트 */}
-          {activeTab === 'desc' && (
-            <div>
-              {product.detailImage ? (
-                <img
-                  src={product.detailImage}
-                  alt={`${product.name} 상세 설명`}
-                  className="w-full max-w-2xl mx-auto block"
-                />
-              ) : (
+              {activeTab === 'desc' && (
                 <p className="text-sm text-[#1C1C1E] leading-relaxed max-w-2xl">
                   {product.description}
                 </p>
               )}
-            </div>
-          )}
 
-          {activeTab === 'spec' && (
-            <div className="max-w-lg">
-              <table className="w-full text-sm">
-                <tbody>
-                  {Object.entries(product.specs).map(([key, value]) => (
-                    <tr key={key} className="border-b border-[#E8E0D5]">
-                      <td className="py-3 pr-6 text-[#888] w-32 font-medium">{key}</td>
-                      <td className="py-3 text-[#1C1C1E]">{value}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
-
-          {activeTab === 'shipping' && (
-            <div className="max-w-2xl space-y-4 text-sm text-[#1C1C1E]">
-              {[
-                { title: '배송 안내', content: '주문 후 1~3 영업일 이내 출고됩니다. 50만원 이상 주문 시 무료배송이며, 미만 시 배송비 3,000원이 부과됩니다.' },
-                { title: '도서산간 지역', content: '도서산간 지역의 경우 추가 배송비가 발생할 수 있습니다. 주문 전 고객센터로 문의해 주세요.' },
-                { title: '반품/교환', content: '상품 수령 후 7일 이내 반품/교환 가능합니다. 단, 사용 흔적이 있거나 포장이 훼손된 경우 불가합니다.' },
-                { title: '도매 배송', content: '도매 주문의 경우 별도 협의를 통해 배송 일정을 조율합니다. 대량 주문 시 전담 담당자가 배정됩니다.' },
-              ].map((item) => (
-                <div key={item.title} className="flex gap-3">
-                  <Check size={16} className="text-[#C4714A] flex-shrink-0 mt-0.5" />
-                  <div>
-                    <p className="font-semibold mb-1">{item.title}</p>
-                    <p className="text-[#888] leading-relaxed">{item.content}</p>
-                  </div>
+              {activeTab === 'spec' && (
+                <div className="max-w-lg">
+                  <table className="w-full text-sm">
+                    <tbody>
+                      {Object.entries(product.specs).map(([key, value]) => (
+                        <tr key={key} className="border-b border-[#E8E0D5]">
+                          <td className="py-3 pr-6 text-[#888] w-32 font-medium">{key}</td>
+                          <td className="py-3 text-[#1C1C1E]">{value}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
-              ))}
-            </div>
+              )}
+
+              {activeTab === 'shipping' && (
+                <div className="max-w-2xl space-y-4 text-sm text-[#1C1C1E]">
+                  {[
+                    { title: '배송 안내', content: '주문 후 1~3 영업일 이내 출고됩니다. 50만원 이상 주문 시 무료배송이며, 미만 시 배송비 3,000원이 부과됩니다.' },
+                    { title: '도서산간 지역', content: '도서산간 지역의 경우 추가 배송비가 발생할 수 있습니다. 주문 전 고객센터로 문의해 주세요.' },
+                    { title: '반품/교환', content: '상품 수령 후 7일 이내 반품/교환 가능합니다. 단, 사용 흔적이 있거나 포장이 훼손된 경우 불가합니다.' },
+                    { title: '도매 배송', content: '도매 주문의 경우 별도 협의를 통해 배송 일정을 조율합니다. 대량 주문 시 전담 담당자가 배정됩니다.' },
+                  ].map((item) => (
+                    <div key={item.title} className="flex gap-3">
+                      <Check size={16} className="text-[#C4714A] flex-shrink-0 mt-0.5" />
+                      <div>
+                        <p className="font-semibold mb-1">{item.title}</p>
+                        <p className="text-[#888] leading-relaxed">{item.content}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </>
           )}
         </div>
 
