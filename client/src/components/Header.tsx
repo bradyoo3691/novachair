@@ -40,8 +40,8 @@ export default function Header() {
       </div>
 
       {/* Main header */}
-      <div className="container py-4 flex items-center justify-between">
-        {/* Logo */}
+      <div className="container py-4 flex items-center justify-center relative">
+        {/* Logo - Center */}
         <Link href="/">
           <div className="flex flex-col items-center cursor-pointer hover:opacity-80 transition-opacity">
             <div className="text-2xl font-bold text-[#1C1C1E]">
@@ -52,8 +52,8 @@ export default function Header() {
           </div>
         </Link>
 
-        {/* Right actions */}
-        <div className="flex items-center gap-4">
+        {/* Right actions - Absolute positioned */}
+        <div className="absolute right-0 flex items-center gap-4">
           <button className="p-2 hover:bg-[#E8E0D5] rounded transition-colors">
             <Search size={20} className="text-[#1C1C1E]" />
           </button>
@@ -81,10 +81,10 @@ export default function Header() {
             {NAV_LINKS.map((link) => (
               <Link key={link.href} href={link.href}>
                 <button
-                  className={`text-sm font-medium transition-all relative ${
+                  className={`text-sm font-semibold transition-all relative ${
                     location === link.href
                       ? 'text-[#1C1C1E]'
-                      : 'text-[#888] hover:text-[#1C1C1E]'
+                      : 'text-[#1C1C1E] hover:text-[#C4714A]'
                   }`}
                 >
                   {link.label}
