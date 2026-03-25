@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { toast } from 'sonner';
 
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xkopwknz';
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -26,25 +28,24 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      // 이메일 전송 시뮬레이션 (실제로는 백엔드 API 호출 필요)
-      const mailtoLink = `mailto:tmdgurl3691@gmail.com?subject=${encodeURIComponent(
-        `[노바체어 문의] ${formData.subject}`
-      )}&body=${encodeURIComponent(
-        `이름: ${formData.name}\n전화: ${formData.phone}\n이메일: ${formData.email}\n\n메시지:\n${formData.message}`
-      )}`;
-
-      window.location.href = mailtoLink;
-
-      // 폼 초기화
-      setFormData({
-        name: '',
-        phone: '',
-        email: '',
-        subject: '',
-        message: '',
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          이름_회사명: formData.name,
+          연락처: formData.phone,
+          이메일: formData.email,
+          제목: formData.subject,
+          내용: formData.message,
+        }),
       });
 
-      toast.success('문의가 전송되었습니다. 감사합니다!');
+      if (response.ok) {
+        setFormData({ name: '', phone: '', email: '', subject: '', message: '' });
+        toast.success('문의가 전송되었습니다. 빠르게 답변 드리겠습니다!');
+      } else {
+        throw new Error('전송 실패');
+      }
     } catch (error) {
       toast.error('문의 전송에 실패했습니다. 다시 시도해주세요.');
     } finally {
@@ -72,7 +73,6 @@ export default function Contact() {
             <h2 className="nova-heading text-2xl text-[#1C1C1E] mb-8">연락처 정보</h2>
 
             <div className="space-y-6">
-              {/* Address */}
               <div className="flex gap-4">
                 <MapPin size={24} className="text-[#C4714A] flex-shrink-0 mt-1" />
                 <div>
@@ -81,7 +81,6 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Phone */}
               <div className="flex gap-4">
                 <Phone size={24} className="text-[#C4714A] flex-shrink-0 mt-1" />
                 <div>
@@ -90,7 +89,6 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Office Phone */}
               <div className="flex gap-4">
                 <Phone size={24} className="text-[#C4714A] flex-shrink-0 mt-1" />
                 <div>
@@ -99,7 +97,6 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Fax */}
               <div className="flex gap-4">
                 <Mail size={24} className="text-[#C4714A] flex-shrink-0 mt-1" />
                 <div>
@@ -108,7 +105,6 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Email */}
               <div className="flex gap-4">
                 <Mail size={24} className="text-[#C4714A] flex-shrink-0 mt-1" />
                 <div>
@@ -120,10 +116,10 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Info box */}
             <div className="mt-8 p-4 bg-[#E8E0D5] border-l-4 border-[#C4714A]">
               <p className="text-xs text-[#1C1C1E]">
-                <strong>*문의 최적시간:</strong> 문의내용 답변은 남겨주신 신속하게 답변 드리겠습니다.
+                <strong>* 운영시간:</strong> 평일 09:00 – 18:00<br />
+                문의 접수 후 빠르게 답변 드리겠습니다.
               </p>
             </div>
           </div>
@@ -131,7 +127,6 @@ export default function Contact() {
           {/* Contact Form */}
           <div className="lg:col-span-2">
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Name */}
               <div>
                 <label className="block text-sm font-semibold text-[#1C1C1E] mb-2">
                   회사명 / 담당자 <span className="text-[#C4714A]">*</span>
@@ -147,7 +142,6 @@ export default function Contact() {
                 />
               </div>
 
-              {/* Phone */}
               <div>
                 <label className="block text-sm font-semibold text-[#1C1C1E] mb-2">
                   연락처 <span className="text-[#C4714A]">*</span>
@@ -163,7 +157,6 @@ export default function Contact() {
                 />
               </div>
 
-              {/* Email */}
               <div>
                 <label className="block text-sm font-semibold text-[#1C1C1E] mb-2">
                   이메일 <span className="text-[#C4714A]">*</span>
@@ -179,7 +172,6 @@ export default function Contact() {
                 />
               </div>
 
-              {/* Subject */}
               <div>
                 <label className="block text-sm font-semibold text-[#1C1C1E] mb-2">
                   문의 제목 <span className="text-[#C4714A]">*</span>
@@ -189,13 +181,12 @@ export default function Contact() {
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  placeholder="전체 문의드립니다."
+                  placeholder="문의 제목을 입력해주세요"
                   required
                   className="w-full px-4 py-3 border border-[#E8E0D5] rounded bg-white text-[#1C1C1E] placeholder-[#888] focus:outline-none focus:border-[#C4714A]"
                 />
               </div>
 
-              {/* Message */}
               <div>
                 <label className="block text-sm font-semibold text-[#1C1C1E] mb-2">
                   문의 내용 <span className="text-[#C4714A]">*</span>
@@ -211,7 +202,6 @@ export default function Contact() {
                 />
               </div>
 
-              {/* Submit button */}
               <button
                 type="submit"
                 disabled={isSubmitting}
