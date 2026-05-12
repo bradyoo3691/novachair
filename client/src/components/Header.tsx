@@ -9,8 +9,9 @@ import { useCart } from '@/contexts/CartContext';
 const NAV_LINKS = [
   { label: '홈', href: '/' },
   { label: '전체 상품', href: '/products' },
-  { label: '도매 안내', href: '/wholesale' },
   { label: 'BEST', href: '/products?sort=best' },
+  { label: '스토어', href: '/shop' },
+  { label: '도매 안내', href: '/wholesale' },
   { label: '문의하기', href: '/contact' },
 ];
 
