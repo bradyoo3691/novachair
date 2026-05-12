@@ -16,14 +16,13 @@ import ProductDetail from "./pages/ProductDetail";
 import Wholesale from "./pages/Wholesale";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Shop from "./pages/Shop";
 
 function ScrollToTop() {
   const [location] = useLocation();
-
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [location]);
-
   return null;
 }
 
@@ -36,6 +35,7 @@ function Router() {
       <Route path="/wholesale" component={Wholesale} />
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
+      <Route path="/shop" component={Shop} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
