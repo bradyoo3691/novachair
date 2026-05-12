@@ -21,7 +21,7 @@ export default function Shop() {
             노바체어<br />공식 스토어
           </h1>
           <p className="text-[#888] text-lg max-w-xl mb-8 leading-relaxed">
-            국내 직영공장에서 직접 제작한 플라스틱 의자를 합리적인 가격으로 만나보세요.<br />
+            국내 직영공장에서 직접 제작한 플라스틱 의자를 합리적인 가격으로 만나보세요.
             네이버 스마트스토어에서 안전하게 구매하실 수 있습니다.
           </p>
           
@@ -92,16 +92,19 @@ export default function Shop() {
                     alt={product.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src = 'https://via.placeholder.com/400x400?text=준비중';
+                      (e.target as HTMLImageElement).src = 'https://placehold.co/400x400?text=준비중';
                     }}
                   />
                   {product.badge && (
                     <span className="absolute top-3 left-3 bg-[#C4714A] text-white text-[10px] font-bold px-2 py-1 tracking-wider uppercase">
-                      {product.badge === 'best' ? 'BEST' : product.badge === 'new' ? 'NEW' : product.badge}
+                      {product.badge === 'best' ? 'BEST' : 'NEW'}
                     </span>
                   )}
-                  {/* 호버 오버레이 */}
-                  <div className={`absolute inset-0 bg-[#1C1C1E]/60 flex items-center justify-center transition-opacity duration-300 ${hoveredId === product.id ? 'opacity-100' : 'opacity-0'}`}>
+                  <div
+                    className={`absolute inset-0 bg-[#1C1C1E]/60 flex items-center justify-center transition-opacity duration-300 ${
+                      hoveredId === product.id ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  >
                     <div className="flex items-center gap-2 bg-[#03C75A] text-white px-4 py-2 text-xs font-semibold">
                       <ShoppingBag size={14} />
                       <span>스토어에서 구매</span>
@@ -115,7 +118,9 @@ export default function Shop() {
                   <h3 className="text-sm font-semibold text-[#1C1C1E] leading-snug mb-2">{product.name}</h3>
                   <div className="flex items-center justify-between">
                     <p className="text-sm font-bold text-[#1C1C1E]">
-                      {product.price ? formatPrice(product.price) : (
+                      {product.price ? (
+                        formatPrice(product.price)
+                      ) : (
                         <span className="text-[#C4714A] text-xs font-semibold">가격 문의</span>
                       )}
                     </p>
@@ -138,7 +143,7 @@ export default function Shop() {
                 대량 구매 문의
               </h2>
               <p className="text-[#888] leading-relaxed max-w-md">
-                식당, 카페, 행사장 등 대량 구매는 도매가로 제공합니다.<br />
+                식당, 카페, 행사장 등 대량 구매는 도매가로 제공합니다.
                 전담 담당자가 최적의 견적을 안내해드립니다.
               </p>
             </div>
