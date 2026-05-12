@@ -85,7 +85,6 @@ export default function Shop() {
                 onMouseLeave={() => setHoveredId(null)}
                 onClick={() => window.open(NAVER_STORE_URL, '_blank')}
               >
-                {/* 이미지 */}
                 <div className="relative aspect-square bg-[#F5F0EB] overflow-hidden">
                   <img
                     src={product.image}
@@ -112,7 +111,6 @@ export default function Shop() {
                   </div>
                 </div>
 
-                {/* 정보 */}
                 <div className="p-4">
                   <p className="text-[10px] text-[#888] tracking-widest uppercase mb-1">NOVA CHAIR</p>
                   <h3 className="text-sm font-semibold text-[#1C1C1E] leading-snug mb-2">{product.name}</h3>
