@@ -121,7 +121,7 @@ export default function ProductDetail() {
 
             {/* 구매 버튼 */}
             {product.smartstoreUrl ? (
-              
+              <a
                 href={product.smartstoreUrl}
                 target="_blank"
                 rel="noopener noreferrer"
