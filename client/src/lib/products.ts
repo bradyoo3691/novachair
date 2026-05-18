@@ -28,31 +28,6 @@ export const CATEGORIES = [
 
 export const PRODUCTS: Product[] = [
   {
-    id: 'nc-001',
-    name: 'STELLA',
-    category: '인테리어 의자',
-    categorySlug: 'interior-chair',
-    price: 89000,
-    description: '국내 직영공장에서 직접 제작한 플라스틱 인테리어 의자. 적재 가능한 스태킹 구조로 식당, 카페, 행사장 등 다양한 공간에 최적화되어 있습니다. 가볍고 내구성이 뛰어나며 관리가 편리합니다.',
-    shortDesc: '공간을 채우는 프리미엄 감성',
-    image: '/stella-main2.png',
-    images: ['/stella-main2.png'],
-    detailImage: '/STELLA-detail.jpg',
-    badge: 'best',
-    stock: 500,
-    specs: {
-      '소재': 'PP (폴리프로필렌)',
-      '제조': '국내 직영공장',
-      '하중': '최대 150kg',
-      '적재': '스태킹 가능',
-      '색상': '화이트 / 베이지',
-      '보증': '1년',
-    },
-    tags: ['플라스틱', '스태킹', '식당용', '카페용', '업소용'],
-    retailAvailable: true,
-    smartstoreUrl: '',
-  },
-  {
     id: 'nc-101',
     name: '노바체어 두꺼비 1호 의자',
     category: '인테리어 의자',
@@ -71,7 +46,7 @@ export const PRODUCTS: Product[] = [
     },
     tags: ['플라스틱', '두꺼비', '인테리어'],
     retailAvailable: true,
-    smartstoreUrl: '',
+    smartstoreUrl: 'https://smartstore.naver.com/happyone118/products/13402036513',
   },
   {
     id: 'nc-102',
@@ -92,7 +67,7 @@ export const PRODUCTS: Product[] = [
     },
     tags: ['플라스틱', '두꺼비', '인테리어'],
     retailAvailable: true,
-    smartstoreUrl: '',
+    smartstoreUrl: 'https://smartstore.naver.com/happyone118/products/13462124490',
   },
   {
     id: 'nc-103',
@@ -113,7 +88,7 @@ export const PRODUCTS: Product[] = [
     },
     tags: ['플라스틱', '두꺼비', '인테리어'],
     retailAvailable: true,
-    smartstoreUrl: '',
+    smartstoreUrl: 'https://smartstore.naver.com/happyone118/products/13467843870',
   },
   {
     id: 'nc-104',
@@ -134,7 +109,7 @@ export const PRODUCTS: Product[] = [
     },
     tags: ['플라스틱', '두꺼비', '인테리어'],
     retailAvailable: true,
-    smartstoreUrl: '',
+    smartstoreUrl: 'https://smartstore.naver.com/happyone118/products/13468157649',
   },
   {
     id: 'nc-105',
@@ -156,7 +131,7 @@ export const PRODUCTS: Product[] = [
     },
     tags: ['플라스틱', '두꺼비', '팔걸이', '인테리어'],
     retailAvailable: true,
-    smartstoreUrl: '',
+    smartstoreUrl: 'https://smartstore.naver.com/happyone118/products/13485782036',
   },
   {
     id: 'nc-106',
@@ -178,7 +153,7 @@ export const PRODUCTS: Product[] = [
     },
     tags: ['플라스틱', '두꺼비', '인테리어'],
     retailAvailable: true,
-    smartstoreUrl: '',
+    smartstoreUrl: 'https://smartstore.naver.com/happyone118/products/13486534951',
   },
   {
     id: 'nc-107',
@@ -200,7 +175,7 @@ export const PRODUCTS: Product[] = [
     },
     tags: ['플라스틱', '두꺼비', '고정다리', '인테리어'],
     retailAvailable: true,
-    smartstoreUrl: '',
+    smartstoreUrl: 'https://smartstore.naver.com/happyone118/products/13493520256',
   },
   {
     id: 'nc-108',
@@ -221,7 +196,7 @@ export const PRODUCTS: Product[] = [
     },
     tags: ['플라스틱', '매틱', '인테리어'],
     retailAvailable: true,
-    smartstoreUrl: '',
+    smartstoreUrl: 'https://smartstore.naver.com/happyone118/products/13458545925',
   },
   {
     id: 'nc-109',
@@ -242,7 +217,7 @@ export const PRODUCTS: Product[] = [
     },
     tags: ['플라스틱', '튤립', '인테리어'],
     retailAvailable: true,
-    smartstoreUrl: '',
+    smartstoreUrl: 'https://smartstore.naver.com/happyone118/products/13413355327',
   },
   {
     id: 'nc-110',
@@ -264,7 +239,7 @@ export const PRODUCTS: Product[] = [
     },
     tags: ['플라스틱', '깡통', '인테리어'],
     retailAvailable: true,
-    smartstoreUrl: '',
+    smartstoreUrl: 'https://smartstore.naver.com/happyone118/products/13527892221',
   },
 ];
 
@@ -275,7 +250,8 @@ export function formatPrice(price: number | null): string {
   return price.toLocaleString('ko-KR') + '원';
 }
 
-export function getDiscountedPrice(price: number, discount?: number): number {
+export function getDiscountedPrice(price: number | null, discount?: number): number {
+  if (!price) return 0;
   if (!discount) return price;
   return Math.round(price * (1 - discount / 100));
 }
