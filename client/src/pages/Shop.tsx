@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ExternalLink, Phone, ShoppingBag, ChevronRight } from 'lucide-react';
-import { SHOP_PRODUCTS, formatPrice } from '@/lib/products';
+import { PRODUCTS, formatPrice } from '@/lib/products';
 
 const NAVER_STORE_URL = 'https://smartstore.naver.com/happyone118';
 
@@ -63,7 +63,7 @@ export default function Shop() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-            {SHOP_PRODUCTS.map((product) => (
+            {PRODUCTS.map((product: any) => (
               <div key={product.id} className="group bg-white border border-[#E8E0D5] hover:border-[#C4714A] transition-all duration-300 cursor-pointer" onMouseEnter={() => setHoveredId(product.id)} onMouseLeave={() => setHoveredId(null)} onClick={() => window.open(NAVER_STORE_URL, '_blank')}>
                 <div className="relative aspect-square bg-[#F5F0EB] overflow-hidden">
                   <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onError={(e) => { (e.target as HTMLImageElement).src = 'https://placehold.co/400x400?text=준비중'; }} />
