@@ -70,11 +70,6 @@ export default function ProductCard({ product }: ProductCardProps) {
           </div>
         )}
 
-<<<<<<< Updated upstream
-        {/* Overlay — 데스크탑만 */}
-        <div className="product-overlay hidden md:flex">
-          <div className="w-full p-3 flex gap-2">
-=======
         {/* Left/Right Navigation Arrows */}
         {product.images.length > 1 && (
           <>
@@ -113,7 +108,6 @@ export default function ProductCard({ product }: ProductCardProps) {
         {/* Overlay */}
         <div className="product-overlay">
           <div className="w-full p-4 flex gap-2">
->>>>>>> Stashed changes
             <button
               onClick={() => {
                 addToCart(product, 1, false);
@@ -162,7 +156,9 @@ export default function ProductCard({ product }: ProductCardProps) {
               {formatPrice(product.price)}
             </span>
           )}
-<a href="tel:05071402631" className="text-[11px] text-[#C4714A] mt-0.5 flex items-center gap-0.5 hover:underline">📞 도매문의: 0507-1402-6431</a>
+          <p className="text-[10px] text-[#C4714A] mt-0.5">
+            도매: {formatPrice(product.wholesalePrice)}
+          </p>
         </div>
 
         {/* 모바일 담기 버튼 */}
