@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Link } from 'wouter';
-import { ArrowRight, Star } from 'lucide-react';
+import { ArrowRight, Star, Phone } from 'lucide-react';
 import { PRODUCTS } from '@/lib/products';
 import ProductCard from '@/components/ProductCard';
 
@@ -50,33 +50,55 @@ export default function Home() {
 
         <div className="container relative z-10">
           <p className="text-[#C4714A] text-xs tracking-[0.2em] uppercase mb-3">WHOLESALE</p>
-          <h2 className="nova-heading text-3xl md:text-4xl text-[#F5F0EB] mb-4">
-            도매 파트너를<br />찾고 계신가요?
-          </h2>
-          <p className="text-[#888] text-base max-w-xl mb-6 leading-relaxed">
-            5개 이상 주문 시 도매가 적용됩니다. 인테리어 업체, 오피스 구매 담당자, 리셀러 모두 환영합니다.
-          </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
-            {[
-              { num: '2,400+', label: '누적 판매 제품' },
-              { num: '98%', label: '고객 만족도' },
-              { num: '150+', label: '도매 파트너사' },
-              { num: '5년', label: '최대 품질 보증' },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <p className="nova-mono text-2xl font-bold text-[#F5F0EB] mb-1">{stat.num}</p>
-                <p className="text-xs text-[#888]">{stat.label}</p>
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
+            <div className="max-w-xl">
+              <h2 className="nova-heading text-3xl md:text-4xl text-[#F5F0EB] mb-2">
+                의자 개별 구매 가능
+              </h2>
+              <h3 className="nova-heading text-2xl md:text-3xl text-[#C4714A] mb-4">
+                의자 대량구매를 고민중이신가요?
+              </h3>
+              <p className="text-[#888] text-sm mb-5 leading-relaxed">
+                10개 이상 주문 시 아래 전화문의 부탁드립니다.
+              </p>
+              <a href="tel:0507-1402-6431" className="inline-flex items-center gap-3 bg-[#C4714A] text-white px-6 py-3 hover:bg-[#b5613d] transition-colors">
+                <Phone size={18} />
+                <span className="text-xl font-bold tracking-widest">0507-1402-6431</span>
+              </a>
+
+              <div className="mt-5">
+                <a
+                  href="/wholesale"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = '/wholesale';
+                    window.scrollTo({ top: 0, behavior: 'instant' });
+                  }}
+                  className="flex items-center gap-2 text-sm text-[#888] hover:text-[#F5F0EB] transition-colors"
+                >
+                  <span>도매 안내 보기</span>
+                  <ArrowRight size={14} />
+                </a>
               </div>
-            ))}
-          </div>
+            </div>
 
-          <Link href="/wholesale">
-            <button className="nova-btn-primary">
-              <span>도매 안내 보기</span>
-              <ArrowRight size={16} />
-            </button>
-          </Link>
+            <div className="grid grid-cols-1 gap-4 md:min-w-[300px]">
+              {[
+                { icon: '🏭', label: '사출직영공장 운영', sub: '남양주 위치' },
+                { icon: '🏆', label: '올림픽, 군부대, 공공기관', sub: '납품 이력 보유' },
+                { icon: '🚚', label: '도매문의시 협의에 의한 공장 직영배송', sub: '배송비 없음' },
+              ].map((item) => (
+                <div key={item.label} className="flex items-start gap-3 bg-white/5 border border-white/10 px-4 py-3">
+                  <span className="text-xl mt-0.5">{item.icon}</span>
+                  <div>
+                    <p className="text-[#F5F0EB] text-sm font-semibold">{item.label}</p>
+                    <p className="text-[#C4714A] text-xs mt-0.5">{item.sub}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
