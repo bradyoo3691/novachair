@@ -131,7 +131,7 @@ export default function ProductDetail() {
                 <span>네이버 스마트스토어에서 구매</span>
               </a>
             ) : (
-              
+              <a
                 href="tel:05071402631"
                 className="nova-btn-primary w-full flex items-center justify-center gap-2 mb-3"
               >
@@ -140,7 +140,7 @@ export default function ProductDetail() {
             )}
 
             {/* 도매 문의 버튼 */}
-            
+            <a
               href="tel:05071402631"
               className="nova-btn-outline w-full flex items-center justify-center gap-2"
             >
