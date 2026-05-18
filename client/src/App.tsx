@@ -17,6 +17,10 @@ import Wholesale from "./pages/Wholesale";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Shop from "./pages/Shop";
+import CategoryInterior from "./pages/CategoryInterior";
+import CategoryOffice from "./pages/CategoryOffice";
+import CategoryClassroom from "./pages/CategoryClassroom";
+import CategoryRestaurant from "./pages/CategoryRestaurant";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -36,6 +40,10 @@ function Router() {
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
       <Route path="/shop" component={Shop} />
+      <Route path="/category/interior" component={CategoryInterior} />
+      <Route path="/category/office" component={CategoryOffice} />
+      <Route path="/category/classroom" component={CategoryClassroom} />
+      <Route path="/category/restaurant" component={CategoryRestaurant} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
@@ -44,7 +52,7 @@ function Router() {
 
 function Layout() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF8F5]">
+    <div className="min-h-screen flex flex-col bg-white">
       <ScrollToTop />
       <Header />
       <div className="flex-1">
