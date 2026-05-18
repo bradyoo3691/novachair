@@ -6,22 +6,23 @@ import { ShoppingCart, Search, Phone, Menu, X, ChevronDown } from 'lucide-react'
 import { useCart } from '@/contexts/CartContext';
 
 const NAV_LINKS = [
-  { label: '홈', href: '/' },
+  { label: '홈', href: '/', highlight: false },
   {
     label: '전체 상품',
     href: '/products',
+    highlight: true,
     dropdown: [
       { label: 'BEST', href: '/products?sort=best' },
       { label: '전체 상품', href: '/products' },
     ],
   },
-  { label: '인테리어 의자', href: '/category/interior' },
-  { label: '사무실 의자', href: '/category/office' },
-  { label: '학원/강의실 의자', href: '/category/classroom' },
-  { label: '고깃집 의자', href: '/category/restaurant' },
-  { label: '스토어', href: '/shop' },
-  { label: '도매 안내', href: '/wholesale' },
-  { label: '문의하기', href: '/contact' },
+  { label: '인테리어 의자', href: '/category/interior', highlight: true },
+  { label: '사무실 의자', href: '/category/office', highlight: true },
+  { label: '학원/강의실 의자', href: '/category/classroom', highlight: true },
+  { label: '고깃집 의자', href: '/category/restaurant', highlight: true },
+  { label: '스토어', href: '/shop', highlight: false, naver: true },
+  { label: '도매 안내', href: '/wholesale', highlight: false },
+  { label: '문의하기', href: '/contact', highlight: false },
 ];
 
 export default function Header() {
@@ -30,6 +31,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [blink, setBlink] = useState(true);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const cartCount = items.reduce((sum, item) => sum + item.quantity, 0);
@@ -48,6 +50,12 @@ export default function Header() {
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // 네이버 로고 반짝이 효과
+  useEffect(() => {
+    const interval = setInterval(() => setBlink((b) => !b), 700);
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -75,11 +83,7 @@ export default function Header() {
 
       {/* Main header */}
       <div
-        style={{
-          maxHeight: scrolled ? '0px' : '140px',
-          overflow: 'hidden',
-          transition: 'max-height 0.3s ease',
-        }}
+        style={{ maxHeight: scrolled ? '0px' : '140px', overflow: 'hidden', transition: 'max-height 0.3s ease' }}
         className="hidden md:block"
       >
         <div className="container py-4 flex items-center justify-center relative">
@@ -125,15 +129,17 @@ export default function Header() {
               </Link>
             </div>
 
-            <div className={`flex items-center gap-6 ${scrolled ? '' : 'flex-1 justify-center'}`}>
+            <div className={`flex items-center gap-5 ${scrolled ? '' : 'flex-1 justify-center'}`}>
               {NAV_LINKS.map((link) =>
                 link.dropdown ? (
                   <div key={link.href} className="relative" ref={dropdownRef}>
                     <button
                       onClick={() => setDropdownOpen(!dropdownOpen)}
-                      className={`flex items-center gap-1 text-[0.8rem] font-semibold transition-all relative whitespace-nowrap ${
-                        location.startsWith('/products') ? 'text-[#C4714A]' : 'text-[#1C1C1E] hover:text-[#C4714A]'
-                      }`}
+                      className={`flex items-center gap-1 transition-all relative whitespace-nowrap ${
+                        link.highlight
+                          ? 'text-[0.9rem] font-extrabold'
+                          : 'text-[0.8rem] font-semibold'
+                      } ${location.startsWith('/products') ? 'text-[#C4714A]' : 'text-[#1C1C1E] hover:text-[#C4714A]'}`}
                     >
                       {link.label}
                       <ChevronDown size={12} className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
@@ -157,11 +163,26 @@ export default function Header() {
                 ) : (
                   <Link key={link.href} href={link.href}>
                     <button
-                      className={`text-[0.8rem] font-semibold transition-all relative whitespace-nowrap ${
+                      className={`transition-all relative whitespace-nowrap flex items-center gap-1 ${
+                        link.highlight
+                          ? 'text-[0.9rem] font-extrabold'
+                          : 'text-[0.8rem] font-semibold'
+                      } ${
                         location === link.href ? 'text-[#C4714A]' : 'text-[#1C1C1E] hover:text-[#C4714A]'
                       }`}
                     >
                       {link.label}
+                      {link.naver && (
+                        <span
+                          style={{
+                            opacity: blink ? 1 : 0,
+                            transition: 'opacity 0.3s ease',
+                            fontSize: '14px',
+                          }}
+                        >
+                          🛍️
+                        </span>
+                      )}
                       <span className={`absolute -bottom-1 left-0 h-0.5 bg-[#C4714A] transition-all duration-300 ${location === link.href ? 'w-full' : 'w-0'}`} />
                     </button>
                   </Link>
@@ -224,11 +245,14 @@ export default function Header() {
                   <Link key={link.href} href={link.href}>
                     <button
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`w-full text-left px-2 py-3 text-sm font-semibold transition-colors ${
-                        location === link.href ? 'text-[#C4714A]' : 'text-[#1C1C1E] hover:text-[#C4714A]'
-                      }`}
+                      className={`w-full text-left px-2 py-3 flex items-center gap-1 transition-colors ${
+                        link.highlight ? 'text-base font-extrabold' : 'text-sm font-semibold'
+                      } ${location === link.href ? 'text-[#C4714A]' : 'text-[#1C1C1E] hover:text-[#C4714A]'}`}
                     >
                       {link.label}
+                      {link.naver && (
+                        <span style={{ opacity: blink ? 1 : 0, transition: 'opacity 0.3s ease' }}>🛍️</span>
+                      )}
                     </button>
                   </Link>
                 )
