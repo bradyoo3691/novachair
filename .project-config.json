@@ -1,0 +1,35 @@
+{
+  "build_command": "pnpm run build",
+  "capabilities": [],
+  "dev_command": "pnpm run dev",
+  "env_vars": {},
+  "experiments": null,
+  "git_remote": {
+    "repo_url": "s3://vida-prod-gitrepo/webdev-git/310519663474293513/N58bZLfHdioH99RE25RZcN",
+    "access_key_id": "ASIAZV3A2ECZBHYIXDVM",
+    "secret_access_key": "XXA/zxju+3jUuYnuXmxRPKYfqlKCHg1mn28wjH1C",
+    "session_token": "IQoJb3JpZ2luX2VjEOz//////////wEaCXVzLWVhc3QtMSJHMEUCIQDg3RZaos5yLur5MORNXPxDod9TAJczc0beV8Six79rlgIgD82sUfHTDlob0isToTz2l+dtobxueB1ZpC0wM1xOTJgq/wMItP//////////ARAEGgw2NjUzODYwOTg4NjYiDEq4JzAZLE0Q2AQlsirTAxTuFmjmx/4eudqb4EdFkRRAbgXF++ND3C8zVWBolremsfhE4JrjYoE3xaHHTONah5v5p2RMfEteb7Oyav+Qj4DP7PeFXgh37j/HvubPMoN6b0eqiU+gIfldyWoWQgQp9WtKpIlA2thguNf3rFKcirCpcIeKQExqcgHtTMvyZ8RY0WXGEbq3+Qq6gMwfqouJFzOlVEA1YXubFvXckK2NsVyk39gJIZReBYwC0/4zFRWFFeaGEa8LMLyGyL7IwxGnvmXhkxnoLE7WQ7A0HtKtK+s4MLf70w/TgnGjW204iEuEDPlBn8KQMa2fmV21WlI13WmUv8fxHPGypRmMI1x0VCPjaBvjpepVEvUv2t5hPXq5g8MBRmz7GYV/caLR5RywwmOF6T8a3WD/3xGPhT2it3KT80AN8dlqQpQdcrbybKJbn9fhk9zXtuU9ugFrx10KIPdVFJc6OWncoCI4ke8t88BvrkSpMZxApHA5ApsQX/1PRj2bZ9RqnvT53i5YcagyJYj5d6K46CL6Xgc4vjEFC7ngHI5JKyqFHjKxCoyo+TXipWGJyiR0mSpvx7JZ3II7IWBbB0DDvdeTDoGRSCC0jMohQjGgtjbfCjma6TzYs/rHu4CgMOqDqtAGOp0BhsS/AHgQ4B/Kip2Ekat+/87OtsoXJDGnfiHHNsMNmoN/DaCHPzC5cPYEh83zDHzrVFLnurLw8Zo4ZR8qB3X1w8YbFA+st3poITmUlm85zZOeP5hFOZkMLNHY08gCCCyetAsXEa1OqwJ9wYD2H3EgSf4F7rxjnUYXByI9ZQ/6yu49FPGTxYlEkKaH2A+z3mdTc6W8VufKcb21q21ITw==",
+    "expiration": "2026-05-18T15:05:14.000Z"
+  },
+  "name": "novachair",
+  "path": "/home/ubuntu/novachair",
+  "port": 3000,
+  "secrets": {
+    "BUILT_IN_FORGE_API_KEY": "FAUmipsTTjURMUadHnTHy5",
+    "BUILT_IN_FORGE_API_URL": "https://forge.manus.ai",
+    "JWT_SECRET": "7GKHciH4oehG3uu8xaszg2",
+    "OAUTH_SERVER_URL": "https://api.manus.im",
+    "OWNER_NAME": "승혁 유",
+    "OWNER_OPEN_ID": "K3Uuc49AWcPdk7uzByKGZf",
+    "VITE_ANALYTICS_ENDPOINT": "https://manus-analytics.com",
+    "VITE_ANALYTICS_WEBSITE_ID": "4fcd280b-9a26-4ab9-919a-ea435d19c9e8",
+    "VITE_APP_ID": "N58bZLfHdioH99RE25RZcN",
+    "VITE_APP_LOGO": "https://files.manuscdn.com/user_upload_by_module/web_dev_logo/310519663474293513/JTWIlctsKlIGNusi.png",
+    "VITE_APP_TITLE": "NovaChair - 의자 \u0026 가구 전문 쇼핑몰",
+    "VITE_FRONTEND_FORGE_API_KEY": "XgJFDgq3GXJSSWMPUVukui",
+    "VITE_FRONTEND_FORGE_API_URL": "https://forge.manus.ai",
+    "VITE_OAUTH_PORTAL_URL": "https://manus.im"
+  },
+  "template_id": "web-static",
+  "test_command": "pnpm test"
+}

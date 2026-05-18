@@ -197,12 +197,14 @@ export default function ProductDetail() {
               <ShoppingCart size={16} />
               <span>장바구니 담기</span>
             </button>
-            <button
-              onClick={() => toast.info('주문 기능은 준비 중입니다.')}
-              className="nova-btn-outline w-full"
+            <a
+              href={product.purchaseUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nova-btn-outline w-full block text-center"
             >
-              <span>바로 구매</span>
-            </button>
+              <span>해당 제품 구매하기</span>
+            </a>
 
             {/* Guarantees */}
             <div className="grid grid-cols-3 gap-3 mt-6">

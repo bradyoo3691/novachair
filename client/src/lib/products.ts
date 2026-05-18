@@ -19,7 +19,11 @@ export interface Product {
   stock: number;
   specs: Record<string, string>;
   tags: string[];
+<<<<<<< Updated upstream
   retailAvailable?: boolean;
+=======
+  purchaseUrl: string;
+>>>>>>> Stashed changes
 }
 
 export const CATEGORIES = [
@@ -31,9 +35,13 @@ export const CATEGORIES = [
   { slug: 'storage', name: '수납/선반', icon: '▤' },
 ];
 
+// GitHub Public 폴더 기본 URL
+const GITHUB_IMAGE_BASE = 'https://raw.githubusercontent.com/happyone118/novachair-images/main/';
+
 export const PRODUCTS: Product[] = [
   {
     id: 'nc-001',
+<<<<<<< Updated upstream
     name: 'STELLA',
     category: '인테리어 의자',
     categorySlug: 'office-chair',
@@ -270,6 +278,288 @@ export const PRODUCTS: Product[] = [
     },
     tags: ['플라스틱', '깡통', '인테리어'],
     retailAvailable: true,
+=======
+    name: '깡통의자',
+    category: '오피스 체어',
+    categorySlug: 'office-chair',
+    price: 189000,
+    wholesalePrice: 145000,
+    wholesaleMinQty: 5,
+    description: '심플하고 세련된 디자인의 깡통의자. 다양한 색상과 공간에 어울나는 미니멀 디자인입니다.',
+    shortDesc: '심플한 깡통의자',
+    image: `${GITHUB_IMAGE_BASE}ggangtong_black.jpg`,
+    images: [
+      `${GITHUB_IMAGE_BASE}ggangtong_black.jpg`,
+      `${GITHUB_IMAGE_BASE}ggangtong_blue.jpg`,
+    ],
+    badge: 'best',
+    stock: 45,
+    specs: {
+      '소재': '메탈 프레임',
+      '색상': '블랙, 블루 외 다양',
+      '하중': '최대 100kg',
+      '높이': '약 80cm',
+      '팔걸이': '없음',
+      '보증': '1년',
+    },
+    tags: ['심플', '미니멀', '메탈'],
+    purchaseUrl: 'https://smartstore.naver.com/happyone118/products/13527892221',
+  },
+  {
+    id: 'nc-002',
+    name: '두꺼비 1호',
+    category: '오피스 체어',
+    categorySlug: 'office-chair',
+    price: 249000,
+    wholesalePrice: 189000,
+    wholesaleMinQty: 5,
+    description: '인체공학적 설계의 두꺼비 1호 의자. 편안한 앉음감과 세련된 디자인이 특징입니다.',
+    shortDesc: '두꺼비 1호 의자',
+    image: `${GITHUB_IMAGE_BASE}gubi_1-1.jpg`,
+    images: [
+      `${GITHUB_IMAGE_BASE}gubi_1-1.jpg`,
+      `${GITHUB_IMAGE_BASE}gubi_1-2.jpg`,
+      `${GITHUB_IMAGE_BASE}gubi_1-3.jpg`,
+    ],
+    badge: 'best',
+    stock: 38,
+    specs: {
+      '소재': '패브릭',
+      '프레임': '메탈',
+      '하중': '최대 120kg',
+      '높이 조절': '가능',
+      '팔걸이': '있음',
+      '보증': '2년',
+    },
+    tags: ['인체공학', '패브릭', '높이조절'],
+    purchaseUrl: 'https://smartstore.naver.com/happyone118/products/13402036513',
+  },
+  {
+    id: 'nc-003',
+    name: '두꺼비 2호',
+    category: '오피스 체어',
+    categorySlug: 'office-chair',
+    price: 279000,
+    wholesalePrice: 210000,
+    wholesaleMinQty: 5,
+    description: '편안한 앉음감의 두꺼비 2호 의자. 다양한 색상 옵션이 있습니다.',
+    shortDesc: '두꺼비 2호 의자',
+    image: `${GITHUB_IMAGE_BASE}gubi_2-1.jpg`,
+    images: [
+      `${GITHUB_IMAGE_BASE}gubi_2-1.jpg`,
+      `${GITHUB_IMAGE_BASE}gubi_2-2.jpg`,
+      `${GITHUB_IMAGE_BASE}gubi_2-3.jpg`,
+    ],
+    stock: 32,
+    specs: {
+      '소재': '패브릭',
+      '프레임': '메탈',
+      '하중': '최대 120kg',
+      '높이 조절': '가능',
+      '팔걸이': '있음',
+      '보증': '2년',
+    },
+    tags: ['패브릭', '높이조절', '다색상'],
+    purchaseUrl: 'https://smartstore.naver.com/happyone118/products/13462124490',
+  },
+  {
+    id: 'nc-004',
+    name: '두꺼비 3호',
+    category: '오피스 체어',
+    categorySlug: 'office-chair',
+    price: 299000,
+    wholesalePrice: 225000,
+    wholesaleMinQty: 5,
+    description: '프리미엄 패브릭의 두꺼비 3호 의자. 고급스러운 디자인과 편안함을 제공합니다.',
+    shortDesc: '두꺼비 3호 의자',
+    image: `${GITHUB_IMAGE_BASE}gubi_3-1.jpg`,
+    images: [
+      `${GITHUB_IMAGE_BASE}gubi_3-1.jpg`,
+      `${GITHUB_IMAGE_BASE}gubi_3-2.jpg`,
+      `${GITHUB_IMAGE_BASE}gubi_3-3.jpg`,
+    ],
+    stock: 28,
+    specs: {
+      '소재': '프리미엄 패브릭',
+      '프레임': '메탈',
+      '하중': '최대 120kg',
+      '높이 조절': '가능',
+      '팔걸이': '있음',
+      '보증': '2년',
+    },
+    tags: ['프리미엄', '패브릭', '고급'],
+    purchaseUrl: 'https://smartstore.naver.com/happyone118/products/13467843870',
+  },
+  {
+    id: 'nc-005',
+    name: '두꺼비 4호',
+    category: '오피스 체어',
+    categorySlug: 'office-chair',
+    price: 329000,
+    wholesalePrice: 249000,
+    wholesaleMinQty: 5,
+    description: '고급스러운 디자인의 두꺼비 4호 의자. 최상의 편안함을 제공합니다.',
+    shortDesc: '두꺼비 4호 의자',
+    image: `${GITHUB_IMAGE_BASE}gubi_4-1.jpg`,
+    images: [
+      `${GITHUB_IMAGE_BASE}gubi_4-1.jpg`,
+      `${GITHUB_IMAGE_BASE}gubi_4-2.jpg`,
+      `${GITHUB_IMAGE_BASE}gubi_4-3.jpg`,
+    ],
+    stock: 25,
+    specs: {
+      '소재': '프리미엄 패브릭',
+      '프레임': '메탈',
+      '하중': '최대 130kg',
+      '높이 조절': '가능',
+      '팔걸이': '있음',
+      '보증': '2년',
+    },
+    tags: ['프리미엄', '고급', '편안함'],
+    purchaseUrl: 'https://smartstore.naver.com/happyone118/products/13468157649',
+  },
+  {
+    id: 'nc-006',
+    name: '두꺼비 5호 (팔걸이 있음)',
+    category: '오피스 체어',
+    categorySlug: 'office-chair',
+    price: 379000,
+    wholesalePrice: 289000,
+    wholesaleMinQty: 5,
+    description: '팔걸이가 있는 프리미엄 두꺼비 5호. 최고급 편안함을 제공합니다.',
+    shortDesc: '두꺼비 5호 (팔걸이 있음)',
+    image: `${GITHUB_IMAGE_BASE}gubi_5-1-1.jpg`,
+    images: [
+      `${GITHUB_IMAGE_BASE}gubi_5-1-1.jpg`,
+      `${GITHUB_IMAGE_BASE}gubi_5-1-2.jpg`,
+      `${GITHUB_IMAGE_BASE}gubi_5-1-3.jpg`,
+    ],
+    stock: 20,
+    specs: {
+      '소재': '프리미엄 패브릭',
+      '프레임': '메탈',
+      '하중': '최대 130kg',
+      '높이 조절': '가능',
+      '팔걸이': '있음',
+      '보증': '2년',
+    },
+    tags: ['프리미엄', '팔걸이', '최고급'],
+    purchaseUrl: 'https://smartstore.naver.com/happyone118/products/13485782036',
+  },
+  {
+    id: 'nc-007',
+    name: '두꺼비 5호 (팔걸이 없음)',
+    category: '오피스 체어',
+    categorySlug: 'office-chair',
+    price: 349000,
+    wholesalePrice: 265000,
+    wholesaleMinQty: 5,
+    description: '팔걸이가 없는 두꺼비 5호. 깔끔한 디자인의 프리미엄 의자입니다.',
+    shortDesc: '두꺼비 5호 (팔걸이 없음)',
+    image: `${GITHUB_IMAGE_BASE}gubi_5-1-1.jpg`,
+    images: [
+      `${GITHUB_IMAGE_BASE}gubi_5-1-1.jpg`,
+      `${GITHUB_IMAGE_BASE}gubi_5-1-2.jpg`,
+      `${GITHUB_IMAGE_BASE}gubi_5-1-3.jpg`,
+    ],
+    stock: 22,
+    specs: {
+      '소재': '프리미엄 패브릭',
+      '프레임': '메탈',
+      '하중': '최대 130kg',
+      '높이 조절': '가능',
+      '팔걸이': '없음',
+      '보증': '2년',
+    },
+    tags: ['프리미엄', '깔끔', '미니멀'],
+    purchaseUrl: 'https://smartstore.naver.com/happyone118/products/13486534951',
+  },
+  {
+    id: 'nc-008',
+    name: '두꺼비 5-1호 (다리고정)',
+    category: '오피스 체어',
+    categorySlug: 'office-chair',
+    price: 359000,
+    wholesalePrice: 272000,
+    wholesaleMinQty: 5,
+    description: '다리가 고정된 두꺼비 5-1호. 안정적인 사용감이 특징입니다.',
+    shortDesc: '두꺼비 5-1호 (다리고정)',
+    image: `${GITHUB_IMAGE_BASE}gubi_5-1-1.jpg`,
+    images: [
+      `${GITHUB_IMAGE_BASE}gubi_5-1-1.jpg`,
+      `${GITHUB_IMAGE_BASE}gubi_5-1-2.jpg`,
+      `${GITHUB_IMAGE_BASE}gubi_5-1-3.jpg`,
+    ],
+    stock: 18,
+    specs: {
+      '소재': '프리미엄 패브릭',
+      '프레임': '메탈',
+      '하중': '최대 130kg',
+      '높이 조절': '가능',
+      '다리': '고정형',
+      '보증': '2년',
+    },
+    tags: ['프리미엄', '안정적', '고정형'],
+    purchaseUrl: 'https://smartstore.naver.com/happyone118/products/13493520256',
+  },
+  {
+    id: 'nc-009',
+    name: '매틱 6호',
+    category: '게이밍 체어',
+    categorySlug: 'gaming-chair',
+    price: 449000,
+    wholesalePrice: 340000,
+    wholesaleMinQty: 3,
+    description: '게이밍과 업무용 겸용 매틱 6호. 다양한 색상으로 공간을 연출할 수 있습니다.',
+    shortDesc: '매틱 6호 의자',
+    image: `${GITHUB_IMAGE_BASE}matic_6-1.jpg`,
+    images: [
+      `${GITHUB_IMAGE_BASE}matic_6-1.jpg`,
+      `${GITHUB_IMAGE_BASE}matic_6-2.jpg`,
+      `${GITHUB_IMAGE_BASE}matic_6-3.jpg`,
+    ],
+    badge: 'best',
+    stock: 30,
+    specs: {
+      '소재': '메시 + 패브릭',
+      '프레임': '메탈',
+      '하중': '최대 150kg',
+      '높이 조절': '가능',
+      '팔걸이': '있음',
+      '보증': '2년',
+    },
+    tags: ['게이밍', '업무용', '다색상'],
+    purchaseUrl: 'https://smartstore.naver.com/happyone118/products/13458545925',
+  },
+  {
+    id: 'nc-010',
+    name: '튤립',
+    category: '소파',
+    categorySlug: 'sofa',
+    price: 599000,
+    wholesalePrice: 455000,
+    wholesaleMinQty: 2,
+    description: '우아한 디자인의 튤립 소파. 거실을 한층 업그레이드시켜줍니다.',
+    shortDesc: '튤립 소파',
+    image: `${GITHUB_IMAGE_BASE}tulip_1.jpg`,
+    images: [
+      `${GITHUB_IMAGE_BASE}tulip_1.jpg`,
+      `${GITHUB_IMAGE_BASE}tulip_2.jpg`,
+      `${GITHUB_IMAGE_BASE}tulip_3.jpg`,
+    ],
+    badge: 'best',
+    stock: 15,
+    specs: {
+      '크기': 'W180 × D85 × H75cm',
+      '소재': '패브릭',
+      '색상': '다양',
+      '수용인원': '2~3인',
+      '다리': '메탈',
+      '보증': '2년',
+    },
+    tags: ['소파', '우아한', '거실'],
+    purchaseUrl: 'https://smartstore.naver.com/happyone118/products/13413355327',
+>>>>>>> Stashed changes
   },
 ];
 
@@ -292,4 +582,8 @@ export function getProductsByCategory(categorySlug: string): Product[] {
 
 export function getProductById(id: string): Product | undefined {
   return PRODUCTS.find((p) => p.id === id);
+}
+
+export function getBestProducts(): Product[] {
+  return PRODUCTS.filter((p) => p.badge === 'best');
 }

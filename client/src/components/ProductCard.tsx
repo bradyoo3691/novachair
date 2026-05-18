@@ -2,7 +2,7 @@
 // Design: Scandinavian Minimalism + Industrial Edge
 
 import { useState } from 'react';
-import { ShoppingCart, Eye } from 'lucide-react';
+import { ShoppingCart, Eye, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'wouter';
 import type { Product } from '@/lib/products';
 import { formatPrice, getDiscountedPrice } from '@/lib/products';
@@ -25,6 +25,20 @@ export default function ProductCard({ product }: ProductCardProps) {
   const [hoveredImage, setHoveredImage] = useState(0);
   const finalPrice = getDiscountedPrice(product.price, product.discount);
   const badge = product.badge ? BADGE_CONFIG[product.badge] : null;
+
+  const handlePrevImage = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setHoveredImage((prev) =>
+      prev === 0 ? product.images.length - 1 : prev - 1
+    );
+  };
+
+  const handleNextImage = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setHoveredImage((prev) =>
+      prev === product.images.length - 1 ? 0 : prev + 1
+    );
+  };
 
   return (
     <div className="product-card">
@@ -56,9 +70,50 @@ export default function ProductCard({ product }: ProductCardProps) {
           </div>
         )}
 
+<<<<<<< Updated upstream
         {/* Overlay — 데스크탑만 */}
         <div className="product-overlay hidden md:flex">
           <div className="w-full p-3 flex gap-2">
+=======
+        {/* Left/Right Navigation Arrows */}
+        {product.images.length > 1 && (
+          <>
+            <button
+              onClick={handlePrevImage}
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full transition-colors z-10"
+              aria-label="Previous image"
+            >
+              <ChevronLeft size={16} />
+            </button>
+            <button
+              onClick={handleNextImage}
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full transition-colors z-10"
+              aria-label="Next image"
+            >
+              <ChevronRight size={16} />
+            </button>
+          </>
+        )}
+
+        {/* Thumbnails - hover to change image */}
+        <div className="absolute bottom-3 left-3 right-3 flex gap-2">
+          {product.images.map((img, i) => (
+            <button
+              key={i}
+              onMouseEnter={() => setHoveredImage(i)}
+              className={`w-8 h-8 rounded overflow-hidden border-2 transition-all flex-shrink-0 ${
+                hoveredImage === i ? 'border-[#C4714A]' : 'border-[#E8E0D5] hover:border-[#888]'
+              }`}
+            >
+              <img src={img} alt="" className="w-full h-full object-cover" />
+            </button>
+          ))}
+        </div>
+
+        {/* Overlay */}
+        <div className="product-overlay">
+          <div className="w-full p-4 flex gap-2">
+>>>>>>> Stashed changes
             <button
               onClick={() => {
                 addToCart(product, 1, false);
