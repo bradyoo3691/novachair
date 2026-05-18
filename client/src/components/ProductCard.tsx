@@ -107,9 +107,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               {formatPrice(product.price)}
             </span>
           )}
-          <p className="text-[11px] text-[#C4714A] mt-0.5">
-            도매: {formatPrice(product.wholesalePrice)}
-          </p>
+<a href="tel:05071402631" className="text-[11px] text-[#C4714A] mt-0.5 flex items-center gap-0.5 hover:underline">📞 도매문의: 0507-1402-6431</a>
         </div>
 
         {/* 모바일 담기 버튼 */}
