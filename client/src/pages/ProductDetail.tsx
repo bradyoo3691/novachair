@@ -1,9 +1,6 @@
-// NovaChair Product Detail Page
-// Design: Scandinavian Minimalism + Industrial Edge
-
 import { useState } from 'react';
 import { useParams, Link } from 'wouter';
-import { ArrowLeft, Check, Truck, Shield, RotateCcw, ExternalLink } from 'lucide-react';
+import { ArrowLeft, Check, Truck, Shield, RotateCcw, ExternalLink, Phone } from 'lucide-react';
 import { getProductById, formatPrice, getDiscountedPrice, PRODUCTS } from '@/lib/products';
 import ProductCard from '@/components/ProductCard';
 
@@ -34,7 +31,6 @@ export default function ProductDetail() {
 
   return (
     <main className="min-h-screen bg-[#FAF8F5]">
-      {/* Breadcrumb */}
       <div className="bg-[#F5F0EB] border-b border-[#E8E0D5]">
         <div className="container py-4">
           <div className="flex items-center gap-2 text-xs text-[#888]">
@@ -42,17 +38,12 @@ export default function ProductDetail() {
             <span>/</span>
             <Link href="/products"><span className="hover:text-[#1C1C1E] transition-colors">상품</span></Link>
             <span>/</span>
-            <Link href={`/products?category=${product.categorySlug}`}>
-              <span className="hover:text-[#1C1C1E] transition-colors">{product.category}</span>
-            </Link>
-            <span>/</span>
             <span className="text-[#1C1C1E]">{product.name}</span>
           </div>
         </div>
       </div>
 
       <div className="container py-12">
-        {/* Back button */}
         <Link href="/products">
           <button className="flex items-center gap-2 text-sm text-[#888] hover:text-[#1C1C1E] transition-colors mb-8">
             <ArrowLeft size={16} />
@@ -60,9 +51,7 @@ export default function ProductDetail() {
           </button>
         </Link>
 
-        {/* Main product section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 mb-10 md:mb-16">
-          {/* Image */}
           <div className="space-y-4">
             <div className="aspect-square md:aspect-[4/3] overflow-hidden bg-[#E8E0D5]">
               <img
@@ -71,7 +60,6 @@ export default function ProductDetail() {
                 className="w-full h-full object-cover"
               />
             </div>
-            {/* Thumbnail row */}
             {product.images.length > 1 && (
               <div className="flex gap-3 flex-wrap">
                 {product.images.map((img, i) => (
@@ -89,17 +77,11 @@ export default function ProductDetail() {
             )}
           </div>
 
-          {/* Info */}
           <div>
-            <p className="text-[10px] text-[#888] tracking-widest uppercase mb-2">
-              {product.category}
-            </p>
-            <h1 className="nova-heading text-3xl md:text-4xl text-[#1C1C1E] mb-3">
-              {product.name}
-            </h1>
+            <p className="text-[10px] text-[#888] tracking-widest uppercase mb-2">{product.category}</p>
+            <h1 className="nova-heading text-3xl md:text-4xl text-[#1C1C1E] mb-3">{product.name}</h1>
             <p className="text-sm text-[#888] leading-relaxed mb-6">{product.shortDesc}</p>
 
-            {/* Price */}
             <div className="bg-[#E8E0D5] p-5 mb-6">
               <p className="text-xs text-[#888] mb-1">판매가</p>
               <div className="flex items-baseline gap-3">
@@ -113,41 +95,36 @@ export default function ProductDetail() {
                 )}
               </div>
               {product.discount && (
-                <span className="text-xs text-[#C4714A] font-medium">
-                  {product.discount}% 할인 적용
-                </span>
+                <span className="text-xs text-[#C4714A] font-medium">{product.discount}% 할인 적용</span>
               )}
             </div>
 
-            {/* 구매 버튼 */}
             {product.smartstoreUrl ? (
-              <a
-                href={product.smartstoreUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => window.open(product.smartstoreUrl, '_blank')}
                 className="nova-btn-primary w-full flex items-center justify-center gap-2 mb-3"
               >
                 <ExternalLink size={16} />
                 <span>네이버 스마트스토어에서 구매</span>
-              </a>
+              </button>
             ) : (
-              <a
-                href="tel:05071402631"
+              <button
+                onClick={() => window.location.href = 'tel:05071402631'}
                 className="nova-btn-primary w-full flex items-center justify-center gap-2 mb-3"
               >
-                <span>📞 구매 문의: 0507-1402-6431</span>
-              </a>
+                <Phone size={16} />
+                <span>구매 문의: 0507-1402-6431</span>
+              </button>
             )}
 
-            {/* 도매 문의 버튼 */}
-            <a
-              href="tel:05071402631"
+            <button
+              onClick={() => window.location.href = 'tel:05071402631'}
               className="nova-btn-outline w-full flex items-center justify-center gap-2"
             >
-              <span>📞 도매 문의: 0507-1402-6431</span>
-            </a>
+              <Phone size={16} />
+              <span>도매 문의: 0507-1402-6431</span>
+            </button>
 
-            {/* Guarantees */}
             <div className="grid grid-cols-3 gap-3 mt-6">
               {[
                 { icon: Truck, text: '50만원 이상\n무료배송' },
@@ -161,7 +138,6 @@ export default function ProductDetail() {
               ))}
             </div>
 
-            {/* Tags */}
             <div className="flex flex-wrap gap-2 mt-5">
               {product.tags.map((tag) => (
                 <span key={tag} className="text-[10px] px-2.5 py-1 bg-[#E8E0D5] text-[#888] tracking-wide">
@@ -172,7 +148,6 @@ export default function ProductDetail() {
           </div>
         </div>
 
-        {/* 상세 이미지 또는 탭 */}
         <div className="mb-16">
           {product.detailImage ? (
             <div className="flex justify-center">
@@ -206,9 +181,7 @@ export default function ProductDetail() {
               </div>
 
               {activeTab === 'desc' && (
-                <p className="text-sm text-[#1C1C1E] leading-relaxed max-w-2xl">
-                  {product.description}
-                </p>
+                <p className="text-sm text-[#1C1C1E] leading-relaxed max-w-2xl">{product.description}</p>
               )}
 
               {activeTab === 'spec' && (
@@ -248,7 +221,6 @@ export default function ProductDetail() {
           )}
         </div>
 
-        {/* Related products */}
         {relatedProducts.length > 0 && (
           <div>
             <div className="nova-divider mb-10" />
